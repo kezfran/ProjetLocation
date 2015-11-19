@@ -8,5 +8,6 @@ namespace ProjetLocation.dao
 {
     class LocationDAO
     {
+        //modif
     }
 }
