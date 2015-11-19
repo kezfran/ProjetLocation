@@ -9,5 +9,6 @@ namespace ProjetLocation.dao
     class MembreDAO
     {
         //test modif
+        private int malade;
     }
 }
