@@ -10,5 +10,7 @@ namespace ProjetLocation.dao
     {
         //test modif
         private int malade;
+
+        private int index;
     }
 }
