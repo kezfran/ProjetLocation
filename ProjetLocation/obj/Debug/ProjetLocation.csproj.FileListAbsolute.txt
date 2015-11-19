@@ -1,3 +1,4 @@
 \\v-ficahper.ca.intra\mesdocuments\etudiants\2012\201278908\visual studio 2013\Projects\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
 C:\Users\Franz\Documents\Visual Studio 2013\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
 M:\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
+\\psf\Home\Desktop\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
