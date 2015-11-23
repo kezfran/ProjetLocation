@@ -64,7 +64,7 @@ namespace ProjetLocation.dao
             try
             {
                 MySqlCommand command = connexion.Connection.CreateCommand();
-                command.CommandText = ADD_REQUEST;
+                command.CommandText = READ_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter(":dateFacture", factureDTO.dateFacture));
                 command.ExecuteNonQuery();
@@ -89,7 +89,7 @@ namespace ProjetLocation.dao
             try
             {
                 MySqlCommand command = connexion.Connection.CreateCommand();
-                command.CommandText = ADD_REQUEST;
+                command.CommandText = UPDATE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter(":idLocation", factureDTO.idLocation));
                 command.Parameters.Add(new MySqlParameter(":dateFacture", factureDTO.dateFacture));
@@ -116,7 +116,7 @@ namespace ProjetLocation.dao
             try
             {
                 MySqlCommand command = connexion.Connection.CreateCommand();
-                command.CommandText = ADD_REQUEST;
+                command.CommandText = DELETE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter(":idFacture", factureDTO.idFacture));
                 command.ExecuteNonQuery();
