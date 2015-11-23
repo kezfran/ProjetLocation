@@ -8,5 +8,9 @@ namespace ProjetLocation.dto
 {
     class ReservationDTO
     {
+        public string idReservation { get; set; }
+        public string idMembre { get; set; }
+        public string idVoiture { get; set; }
+        public string dateLocation { get; set; }
     }
 }
