@@ -2,3 +2,4 @@
 C:\Users\Franz\Documents\Visual Studio 2013\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
 M:\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
 \\psf\Home\Desktop\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
+C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
