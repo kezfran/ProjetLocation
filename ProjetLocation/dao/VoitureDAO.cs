@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjetLocation.db;
 using ProjetLocation.dto;
+using ProjetLocation.exception.dao;
+using ProjetLocation.exception.dto;
 using MySql.Data.MySqlClient;
 
 namespace ProjetLocation.dao
@@ -29,11 +31,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (voitureDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             voitureDTO = new VoitureDTO();
             try
@@ -58,11 +60,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (voitureDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             voitureDTO = new VoitureDTO();
             try
@@ -76,7 +78,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw new DAOException(mySqlException);
             }
         }
 
@@ -84,11 +86,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (voitureDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             voitureDTO = new VoitureDTO();
             try
@@ -105,7 +107,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw new DAOException(mySqlException);
             }
         }
 
@@ -113,11 +115,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (voitureDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             voitureDTO = new VoitureDTO();
             try
@@ -131,7 +133,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw new DAOException(mySqlException);
             }
         }
     }

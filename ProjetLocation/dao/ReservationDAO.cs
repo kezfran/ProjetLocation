@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using ProjetLocation.db;
 using ProjetLocation.dto;
 using MySql.Data.MySqlClient;
+using ProjetLocation.exception.dto;
+using ProjetLocation.exception.dao;
 
 namespace ProjetLocation.dao
 {
@@ -29,11 +31,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (reservationDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             reservationDTO = new ReservationDTO();
             try
@@ -50,7 +52,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw new DAOException(mySqlException);
             }
         }
 
@@ -58,11 +60,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (reservationDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             reservationDTO = new ReservationDTO();
             try
@@ -76,7 +78,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw new DAOException(mySqlException);
             }
         }
 
@@ -84,11 +86,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (reservationDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             reservationDTO = new ReservationDTO();
             try
@@ -105,7 +107,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw new DAOException(mySqlException);
             }
         }
 
@@ -113,11 +115,11 @@ namespace ProjetLocation.dao
         {
             if (connexion == null)
             {
-                //À FAIRE
+                throw new InvalidConnexionException("La connexion ne peut être null!");
             }
             if (reservationDTO == null)
             {
-                //À FAIRE
+                throw new InvalidDTOException("Le DTO ne peut être null!");
             }
             reservationDTO = new ReservationDTO();
             try
@@ -131,7 +133,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw new DAOException(mySqlException);
             }
         }
     }
