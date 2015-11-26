@@ -22,6 +22,9 @@ namespace ProjetLocation.dao
 
         private static string DELETE_REQUEST = "DELETE from voiture WHERE idVoiture = :idVoiture";
 
+        private static string GET_ALL_REQUEST = "SELECT idVoiture, marque ,modele, annee"
+            + "FROM voiture";
+
         public VoitureDAO()
         {
 
@@ -135,6 +138,46 @@ namespace ProjetLocation.dao
             {
                 throw new DAOException(mySqlException);
             }
+        }
+
+        public List<VoitureDTO> GetAll(Connexion connexion, String sortByPropertyName)
+        {
+            if (connexion == null)
+            {
+                throw new InvalidConnexionException("La connexion ne peut être null!");
+            }
+            if (sortByPropertyName == null)
+            {
+                throw new InvalidSortByPropertyException("Le DTO ne peut être null!");
+            }
+            List<VoitureDTO> voitures = new List<VoitureDTO>();
+
+            try
+            {
+                MySqlCommand command = connexion.Connection.CreateCommand();
+                command.CommandText = GET_ALL_REQUEST;
+
+                MySqlDataReader datareader = command.ExecuteReader();
+                VoitureDTO voitureDTO = null;
+
+                if(datareader.NextResult()){
+                    voitureDTO = new VoitureDTO();
+
+                    do
+                    {
+                        command.Parameters.Add(new MySqlParameter("idVoiture", voitureDTO.idVoiture));
+                        command.Parameters.Add(new MySqlParameter("marque", voitureDTO.marque));
+                        command.Parameters.Add(new MySqlParameter("modele", voitureDTO.modele));
+                        command.Parameters.Add(new MySqlParameter("annee", voitureDTO.annee));
+                        voitures.Add(voitureDTO);
+                    } while (datareader.NextResult());
+                }
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException);
+            }
+            return voitures;
         }
     }
 }
