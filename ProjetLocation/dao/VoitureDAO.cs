@@ -22,7 +22,7 @@ namespace ProjetLocation.dao
 
         private static string DELETE_REQUEST = "DELETE from voiture WHERE idVoiture = :idVoiture";
 
-        private static string GET_ALL_REQUEST = "SELECT idVoiture, marque ,modele, annee"
+        private static string GET_ALL_REQUEST = "SELECT idVoiture, marque ,modele, annee "
             + "FROM voiture";
 
         public VoitureDAO()

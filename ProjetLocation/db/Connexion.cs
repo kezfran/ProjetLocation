@@ -18,7 +18,7 @@ namespace ProjetLocation.db
             set { connection = value; }
         }
 
-        public Connexion(string serveur,string db,string user,string password)
+        public Connexion()
         {
             connection.ConnectionString = @"Server = localhost; database = rent; Uid = rent; Pwd = 123456";
         }
