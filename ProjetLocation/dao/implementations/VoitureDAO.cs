@@ -55,7 +55,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw new MySqlException();
+                throw mySqlException;
             }
         }
 

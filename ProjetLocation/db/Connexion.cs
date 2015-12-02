@@ -20,6 +20,7 @@ namespace ProjetLocation.db
 
         public Connexion()
         {
+            connection = new MySqlConnection();
             connection.ConnectionString = @"Server = localhost; database = rent; Uid = rent; Pwd = 123456";
         }
 
