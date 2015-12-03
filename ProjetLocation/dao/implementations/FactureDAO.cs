@@ -9,11 +9,14 @@ using ProjetLocation.db;
 using ProjetLocation.exception.dao;
 using ProjetLocation.exception.dto;
 using MySql.Data.MySqlClient;
+using ProjetLocation.dao.interfaces;
 
 namespace ProjetLocation.dao
 {
-    class FactureDAO
+    class FactureDAO : IFactureDAO
     {
+        public Connexion connexion { get; set; }
+        public MySqlCommand command { get; set; }
         private static string ADD_REQUEST = "INSERT into facture (idFacture,idLocation,dateFacture) " +
             "VALUES(:idFacture, :idLocation, :dateFacture)";
 
@@ -23,72 +26,66 @@ namespace ProjetLocation.dao
 
         private static string DELETE_REQUEST = "DELETE from facture WHERE idFacture = :idFacture";
 
+        public FactureDAO()
+        {
+            connexion = new Connexion();
+            command = connexion.Connection.CreateCommand();
+        }
+
         public void Add(Connexion connexion, FactureDTO factureDTO)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (factureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            factureDTO = new FactureDTO();
+            
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
+                connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter(":idFacture", factureDTO.idFacture));
                 command.Parameters.Add(new MySqlParameter(":idLocation", factureDTO.idLocation));
                 command.Parameters.Add(new MySqlParameter(":dateFacture", factureDTO.dateFacture));
-                command.ExecuteNonQuery();
+                 command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
-                throw new DAOException(mySqlException);
+                throw mySqlException;
+            }
+            finally
+            {
+                connexion.Close();
             }
         }
 
-        public void READ(Connexion connexion, FactureDTO factureDTO)
+        public void READ( FactureDTO factureDTO)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (factureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
+           
             factureDTO = new FactureDTO();
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
+                connexion.Open();
                 command.CommandText = READ_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter(":dateFacture", factureDTO.dateFacture));
-                command.ExecuteNonQuery();
+                MySqlDataReader dr = command.ExecuteReader();
             }
             catch (MySqlException mySqlException)
             {
                 throw new DAOException(mySqlException);
             }
+            finally
+            {
+                connexion.Close();
+            }
+            
         }
 
-        public void Update(Connexion connexion, FactureDTO factureDTO)
+        public void Update( FactureDTO factureDTO)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (factureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            factureDTO = new FactureDTO();
+          
+        
+            
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
+                connexion.Open();
                 command.CommandText = UPDATE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter(":idLocation", factureDTO.idLocation));
@@ -100,22 +97,18 @@ namespace ProjetLocation.dao
             {
                 throw new DAOException(mySqlException);
             }
+            finally
+            {
+                connexion.Close();
+            }
         }
 
-        public void Delete(Connexion connexion, FactureDTO factureDTO)
+        public void Delete( FactureDTO factureDTO)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (factureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            factureDTO = new FactureDTO();
+            
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
+                connexion.Open();
                 command.CommandText = DELETE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter(":idFacture", factureDTO.idFacture));
@@ -124,6 +117,10 @@ namespace ProjetLocation.dao
             catch (MySqlException mySqlException)
             {
                 throw new DAOException(mySqlException);
+            }
+            finally
+            {
+                connexion.Close();
             }
         }
     }
