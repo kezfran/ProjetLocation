@@ -77,7 +77,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        List<MembreDTO> getAllMembre()
+        List<MembreDTO> IMembreService.getAllMembre()
         {
             try
             {
@@ -88,5 +88,7 @@ namespace ProjetLocation.service.implementations
                 throw new ServiceException(daoException.Message);
             }
         }
+
+     
     }
 }
