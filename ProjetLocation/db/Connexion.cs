@@ -23,6 +23,7 @@ namespace ProjetLocation.db
         {
             connection = new MySqlConnection();
             //connection.ConnectionString = @"Server = localhost; database = rent; Uid = rent; Pwd = 123456";
+            //Le connectionstring est recu à partir du fichier appConfig
             connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["csLocation"].ToString();
         }
 
