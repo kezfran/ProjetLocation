@@ -4,36 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjetLocation.dao.interfaces;
+using ProjetLocation.service.interfaces;
+using ProjetLocation.exception.service;
 using ProjetLocation.dto;
 using ProjetLocation.exception.dao;
-using ProjetLocation.exception.service;
-using ProjetLocation.service.interfaces;
+
 
 namespace ProjetLocation.service.implementations
 {
-    public class MembreService : IMembreService
+    public class VoitureService : IVoitureService
     {
-        private IMembreDAO membreDAO;
+        IVoitureDAO voitureDAO;
 
-        private IMembreDAO getMembreDAO()
+        private IVoitureDAO getVoitureDAO()
         {
-            return this.membreDAO;
-        }
-        private void setMembreDAO(IMembreDAO membreDAO)
-        {
-            this.membreDAO = membreDAO;
+            return this.voitureDAO;
         }
 
-        public MembreService()
+        private void setVoitureDAO(IVoitureDAO voitureDAO)
+        {
+            this.voitureDAO = voitureDAO;
+        }
+
+        public VoitureService()
         {
             
         }
-
-        int IMembreService.addMembre(MembreDTO membreDTO)
+        /// <inheritdoc />
+        int IVoitureService.addVoiture(VoitureDTO voitureDTO)
         {
             try
             {
-                return membreDAO.Add(membreDTO);
+                return voitureDAO.Add(voitureDTO);
             }
             catch (DAOException daoException)
             {
@@ -41,11 +43,12 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        MembreDTO IMembreService.readMembre(int id)
+        /// <inheritdoc />
+        VoitureDTO IVoitureService.readVoiture(int id)
         {
             try
             {
-                return membreDAO.Read(id);
+                return voitureDAO.Read(id);
             }
             catch (DAOException daoException)
             {
@@ -53,11 +56,12 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        int IMembreService.updateMembre(MembreDTO membreDTO)
+        /// <inheritdoc />
+        int IVoitureService.updateVoiture(VoitureDTO voitureDTO)
         {
             try
             {
-                return membreDAO.Update(membreDTO);
+                return voitureDAO.Update(voitureDTO);
             }
             catch (DAOException daoException)
             {
@@ -65,11 +69,12 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        int IMembreService.deleteMembre(int id)
+        /// <inheritdoc />
+        int IVoitureService.deleteVoiture(int id)
         {
             try
             {
-                return membreDAO.Delete(id);
+                return voitureDAO.Delete(id);
             }
             catch (DAOException daoException)
             {
@@ -77,11 +82,12 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        List<MembreDTO> getAllMembre()
+        /// <inheritdoc />
+        List<VoitureDTO> IVoitureService.getAllVoitures()
         {
             try
             {
-                return membreDAO.GetAll();
+                return voitureDAO.GetAll();
             }
             catch (DAOException daoException)
             {

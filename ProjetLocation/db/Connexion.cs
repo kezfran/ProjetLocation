@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
+
 namespace ProjetLocation.db
 {
-    class Connexion
+    public class Connexion
     {
         private MySqlConnection connection;
 
@@ -21,7 +22,8 @@ namespace ProjetLocation.db
         public Connexion()
         {
             connection = new MySqlConnection();
-            connection.ConnectionString = @"Server = localhost; database = rent; Uid = rent; Pwd = 123456";
+            //connection.ConnectionString = @"Server = localhost; database = rent; Uid = rent; Pwd = 123456";
+            connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["csLocation"].ToString();
         }
 
         public bool Open()

@@ -7,175 +7,164 @@ using ProjetLocation.db;
 using ProjetLocation.dto;
 using ProjetLocation.exception.dao;
 using ProjetLocation.exception.dto;
+using ProjetLocation.dao.interfaces;
 using MySql.Data.MySqlClient;
 
 namespace ProjetLocation.dao
 {
-    class VoitureDAO
+    public class VoitureDAO : IVoitureDAO
     {
-        private static string ADD_REQUEST = "INSERT into voiture (idVoiture,marque,modele,annee) " +
-            "VALUES(:idVoiture, :marque, :modele, :annee)";
+        public Connexion connexion { get; set; }
+        public MySqlCommand command { get; set; }
 
-        private static string READ_REQUEST = "SELECT * FROM voiture WHERE idVoiture = :idVoiture";
+        private static string ADD_REQUEST = @"INSERT into voiture (marque,modele,annee) " +
+            "VALUES(@marque, @modele, @annee)";
 
-        private static string UPDATE_REQUEST = "UPDATE voiture set marque = :marque, modele = :modele, annee = :annee WHERE idVoiture = :idVoiture";
+        private static string READ_REQUEST = @"SELECT * FROM voiture WHERE idVoiture = @idVoiture";
 
-        private static string DELETE_REQUEST = "DELETE from voiture WHERE idVoiture = :idVoiture";
+        private static string UPDATE_REQUEST = @"UPDATE voiture set marque = @marque, modele = @modele, annee = @annee WHERE idVoiture = @idVoiture";
 
-        private static string GET_ALL_REQUEST = "SELECT idVoiture, marque ,modele, annee "
+        private static string DELETE_REQUEST = @"DELETE from voiture WHERE idVoiture = @idVoiture";
+
+        private static string GET_ALL_REQUEST = @"SELECT idVoiture, marque ,modele, annee "
             + "FROM voiture";
 
         public VoitureDAO()
         {
-
+            connexion = new Connexion();
+            command = connexion.Connection.CreateCommand();
         }
 
-        public void Add(Connexion connexion, VoitureDTO voitureDTO)
+        /// <inheritdoc />
+        public int Add(VoitureDTO voitureDTO)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (voitureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            voitureDTO = new VoitureDTO();
+            int n = 0;
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
+                connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter(":iDvoiture", voitureDTO.idVoiture));
-                command.Parameters.Add(new MySqlParameter(":marque", voitureDTO.marque));
-                command.Parameters.Add(new MySqlParameter(":modele", voitureDTO.modele));
-                command.Parameters.Add(new MySqlParameter(":annee", voitureDTO.annee));
-                command.ExecuteNonQuery();
+                command.Parameters.Add(new MySqlParameter("@iDvoiture", voitureDTO.idVoiture));
+                command.Parameters.Add(new MySqlParameter("@marque", voitureDTO.marque));
+                command.Parameters.Add(new MySqlParameter("@modele", voitureDTO.modele));
+                command.Parameters.Add(new MySqlParameter("@annee", voitureDTO.annee));
+                n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
                 throw mySqlException;
             }
+            finally
+            {
+                connexion.Close();
+            }
+            return n;
         }
 
-        public void Read(Connexion connexion, VoitureDTO voitureDTO)
+        /// <inheritdoc />
+        public VoitureDTO Read(int id)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (voitureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            voitureDTO = new VoitureDTO();
+            VoitureDTO voitureDTO = new VoitureDTO();
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
+                connexion.Open();
                 command.CommandText = READ_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter(":idVoiture",voitureDTO.idVoiture));
-                command.ExecuteNonQuery();
-            }
-            catch (MySqlException mySqlException)
-            {
-                throw new DAOException(mySqlException);
-            }
-        }
+                command.Parameters.Add(new MySqlParameter("@idVoiture",id));
+                MySqlDataReader dr = command.ExecuteReader();
 
-        public void Update(Connexion connexion, VoitureDTO voitureDTO)
-        {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (voitureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            voitureDTO = new VoitureDTO();
-            try
-            {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
-                command.CommandText = UPDATE_REQUEST;
-
-                command.Parameters.Add(new MySqlParameter(":marque", voitureDTO.marque));
-                command.Parameters.Add(new MySqlParameter(":modele", voitureDTO.modele));
-                command.Parameters.Add(new MySqlParameter(":annee", voitureDTO.annee));
-                command.Parameters.Add(new MySqlParameter(":iDvoiture", voitureDTO.idVoiture));
-                command.ExecuteNonQuery();
-            }
-            catch (MySqlException mySqlException)
-            {
-                throw new DAOException(mySqlException);
-            }
-        }
-
-        public void Delete(Connexion connexion, VoitureDTO voitureDTO)
-        {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (voitureDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            voitureDTO = new VoitureDTO();
-            try
-            {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
-                command.CommandText = DELETE_REQUEST;
-
-                command.Parameters.Add(new MySqlParameter(":idVoiture", voitureDTO.idVoiture));
-                command.ExecuteNonQuery();
-            }
-            catch (MySqlException mySqlException)
-            {
-                throw new DAOException(mySqlException);
-            }
-        }
-
-        public List<VoitureDTO> GetAll(Connexion connexion, String sortByPropertyName)
-        {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (sortByPropertyName == null)
-            {
-                throw new InvalidSortByPropertyException("Le DTO ne peut être null!");
-            }
-            List<VoitureDTO> voitures = new List<VoitureDTO>();
-
-            try
-            {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-                command.CommandText = GET_ALL_REQUEST;
-
-                MySqlDataReader datareader = command.ExecuteReader();
-                VoitureDTO voitureDTO = null;
-
-                if(datareader.NextResult()){
-                    voitureDTO = new VoitureDTO();
-
-                    do
-                    {
-                        command.Parameters.Add(new MySqlParameter("idVoiture", voitureDTO.idVoiture));
-                        command.Parameters.Add(new MySqlParameter("marque", voitureDTO.marque));
-                        command.Parameters.Add(new MySqlParameter("modele", voitureDTO.modele));
-                        command.Parameters.Add(new MySqlParameter("annee", voitureDTO.annee));
-                        voitures.Add(voitureDTO);
-                    } while (datareader.NextResult());
+                if(dr.Read()){
+                    voitureDTO.idVoiture = dr.GetInt32(0);
+                    voitureDTO.marque = dr.GetString(1);
+                    voitureDTO.modele = dr.GetString(2);
+                    voitureDTO.annee = dr.GetDateTime(3);
                 }
             }
             catch (MySqlException mySqlException)
             {
                 throw new DAOException(mySqlException);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+            return voitureDTO;
+        }
+
+        /// <inheritdoc />
+        public int Update(VoitureDTO voitureDTO)
+        {
+            int n = 0;
+            try
+            {
+                connexion.Open();
+                command.CommandText = UPDATE_REQUEST;
+
+                command.Parameters.Add(new MySqlParameter("@marque", voitureDTO.marque));
+                command.Parameters.Add(new MySqlParameter("@modele", voitureDTO.modele));
+                command.Parameters.Add(new MySqlParameter("@annee", voitureDTO.annee));
+                command.Parameters.Add(new MySqlParameter("@idVoiture", voitureDTO.idVoiture));
+                n = command.ExecuteNonQuery();
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException.Message);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+            return n;
+        }
+
+        /// <inheritdoc />
+        public int Delete(int id)
+        {
+            try
+            {
+                connexion.Open();
+                command.CommandText = DELETE_REQUEST;
+
+                command.Parameters.Add(new MySqlParameter("@idVoiture", id));
+                return command.ExecuteNonQuery();
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+        }
+
+        /// <inheritdoc />
+        public List<VoitureDTO> GetAll()
+        {
+            List<VoitureDTO> voitures = new List<VoitureDTO>();
+            VoitureDTO voitureDTO = new VoitureDTO();
+            try
+            {
+                connexion.Open();
+                command.CommandText = GET_ALL_REQUEST;
+
+                MySqlDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    voitureDTO.idVoiture = dr.GetInt32(0);
+                    voitureDTO.marque = dr.GetString(1);
+                    voitureDTO.modele = dr.GetString(2);
+                    voitureDTO.annee = dr.GetDateTime(3);
+                    voitures.Add(voitureDTO);
+                }
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException);
+            }
+            finally
+            {
+                connexion.Close();
             }
             return voitures;
         }

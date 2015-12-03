@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjetLocation.dto
 {
-    class VoitureDTO
+    public class VoitureDTO
     {
-        public string idVoiture { get; set; }
+        public int idVoiture { get; set; }
         public string marque { get; set; }
         public string modele { get; set; }
-        public string annee { get; set; }
+        public DateTime annee { get; set; }
     }
 }

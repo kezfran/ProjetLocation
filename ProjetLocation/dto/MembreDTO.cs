@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetLocation.dto
 {
-    class MembreDTO
+    public class MembreDTO
     {
         public int idMembre { get; set; }
         public string nom { get; set; }

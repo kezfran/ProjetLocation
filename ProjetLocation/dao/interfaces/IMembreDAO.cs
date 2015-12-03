@@ -13,31 +13,31 @@ namespace ProjetLocation.dao.interfaces
         /// Ajoute un nouveau DTO dans la base de données.
         /// </summary>
         /// <param name="membreDTO">Le membre à ajouter</param>
-        void add(MembreDTO membreDTO);
+        int Add(MembreDTO membreDTO);
 
         /// <summary>
         /// Lit un DTO à partir de la base de données.
         /// </summary>
         /// <param name="id">L'id du membre à lire</param>
         /// <returns name="membreDTO">Le membre à retourner</returns>
-        MembreDTO read(int id);
+        MembreDTO Read(int id);
 
         /// <summary>
         /// Met à jour un membre dans la base de données.
         /// </summary>
         /// <param name="membreDTO">Le membre à mettre à jour</param>
-        void update(MembreDTO membreDTO);
+        int Update(MembreDTO membreDTO);
 
         /// <summary>
         /// Efface un membre dans la base de données.
         /// </summary>
         /// <param name="id">L'id du membre à effacer</param>
-        void delete(int id);
+        int Delete(int id);
 
         /// <summary>
         /// Lit tous les membres de la base de données.
         /// </summary>
         /// <returns name="membres">La liste des membres à retourner</returns>
-        List<MembreDTO> getAll();
+        List<MembreDTO> GetAll();
     }
 }

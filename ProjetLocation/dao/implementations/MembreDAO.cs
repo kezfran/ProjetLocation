@@ -29,10 +29,6 @@ namespace ProjetLocation.dao
         private static string GET_ALL_REQUEST = @"SELECT idMembre, nom ,telephone, adresse, email, nbLocation "
             + "FROM membre";
 
-        private static string FIND_BY_NOM = @"SELECT idMembre, nom, telephone, adresse, email, nbLocation "
-            + "FROM membre "
-            + "where nom = @nom";
-
         public MembreDAO()
         {
             connexion = new Connexion();
@@ -40,7 +36,7 @@ namespace ProjetLocation.dao
         }
 
         /// <inheritdoc />
-        public void Add(MembreDTO membreDTO)
+        public int Add(MembreDTO membreDTO)
         {
             try
             {
@@ -54,7 +50,7 @@ namespace ProjetLocation.dao
                 command.Parameters.Add(new MySqlParameter("@email", membreDTO.email));
                 command.Parameters.Add(new MySqlParameter("@nbLocation", membreDTO.nbLocation));
 
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
@@ -100,7 +96,7 @@ namespace ProjetLocation.dao
         }
 
         /// <inheritdoc />
-        public void Update(MembreDTO membreDTO)
+        public int Update(MembreDTO membreDTO)
         {
             try
             {
@@ -113,7 +109,7 @@ namespace ProjetLocation.dao
                 command.Parameters.Add(new MySqlParameter("@email", membreDTO.email));
                 command.Parameters.Add(new MySqlParameter("@nbLocation", membreDTO.nbLocation));
                 command.Parameters.Add(new MySqlParameter("@idMembre", membreDTO.idMembre));
-                command.ExecuteNonQuery();
+               return command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
@@ -126,7 +122,7 @@ namespace ProjetLocation.dao
         }
 
         /// <inheritdoc />
-        public void Delete(int id)
+        public int Delete(int id)
         {
             try
             {
@@ -134,7 +130,7 @@ namespace ProjetLocation.dao
                 command.CommandText = DELETE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter("@idMembre", id));
-                command.ExecuteNonQuery();
+               return command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
