@@ -8,28 +8,19 @@ using ProjetLocation.dto;
 using ProjetLocation.exception.dao;
 using ProjetLocation.exception.service;
 using ProjetLocation.service.interfaces;
+using ProjetLocation.dao;
 
 namespace ProjetLocation.service.implementations
 {
     public class MembreService : IMembreService
     {
-        private IMembreDAO membreDAO;
-
-        private IMembreDAO getMembreDAO()
-        {
-            return this.membreDAO;
-        }
-        private void setMembreDAO(IMembreDAO membreDAO)
-        {
-            this.membreDAO = membreDAO;
-        }
+        MembreDAO membreDAO = new MembreDAO();
 
         public MembreService()
         {
-            
         }
 
-        int IMembreService.addMembre(MembreDTO membreDTO)
+        public int AddMembre(MembreDTO membreDTO)
         {
             try
             {
@@ -41,7 +32,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        MembreDTO IMembreService.readMembre(int id)
+        public MembreDTO ReadMembre(int id)
         {
             try
             {
@@ -53,7 +44,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        int IMembreService.updateMembre(MembreDTO membreDTO)
+        public int UpdateMembre(MembreDTO membreDTO)
         {
             try
             {
@@ -65,7 +56,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        int IMembreService.deleteMembre(int id)
+        public int DeleteMembre(int id)
         {
             try
             {
@@ -77,7 +68,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        List<MembreDTO> IMembreService.getAllMembre()
+        public List<MembreDTO> GetAllMembres()
         {
             try
             {
@@ -88,7 +79,5 @@ namespace ProjetLocation.service.implementations
                 throw new ServiceException(daoException.Message);
             }
         }
-
-     
     }
 }

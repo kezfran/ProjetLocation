@@ -43,7 +43,7 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter("@idMembre", membreDTO.idMembre));
+                //command.Parameters.Add(new MySqlParameter("@idMembre", membreDTO.idMembre));
                 command.Parameters.Add(new MySqlParameter("@nom", membreDTO.nom));
                 command.Parameters.Add(new MySqlParameter("@telephone", membreDTO.telephone));
                 command.Parameters.Add(new MySqlParameter("@adresse", membreDTO.adresse));
@@ -54,7 +54,7 @@ namespace ProjetLocation.dao
             }
             catch (MySqlException mySqlException)
             {
-                throw  mySqlException;
+                throw mySqlException;
             }
             finally
             {
@@ -73,7 +73,7 @@ namespace ProjetLocation.dao
 
                 command.Parameters.Add(new MySqlParameter("@idMembre", id));
                 MySqlDataReader dr = command.ExecuteReader();
-                
+
                 if (dr.Read())
                 {
                     membreDTO.idMembre = dr.GetInt32(0);
@@ -98,6 +98,7 @@ namespace ProjetLocation.dao
         /// <inheritdoc />
         public int Update(MembreDTO membreDTO)
         {
+            int n = 0;
             try
             {
                 connexion.Open();
@@ -109,7 +110,7 @@ namespace ProjetLocation.dao
                 command.Parameters.Add(new MySqlParameter("@email", membreDTO.email));
                 command.Parameters.Add(new MySqlParameter("@nbLocation", membreDTO.nbLocation));
                 command.Parameters.Add(new MySqlParameter("@idMembre", membreDTO.idMembre));
-               return command.ExecuteNonQuery();
+                n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
@@ -119,18 +120,20 @@ namespace ProjetLocation.dao
             {
                 connexion.Close();
             }
+            return n;
         }
 
         /// <inheritdoc />
         public int Delete(int id)
         {
+            int n = 0;
             try
             {
                 connexion.Open();
                 command.CommandText = DELETE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter("@idMembre", id));
-               return command.ExecuteNonQuery();
+                n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
@@ -140,6 +143,7 @@ namespace ProjetLocation.dao
             {
                 connexion.Close();
             }
+            return n;
         }
 
         /// <inheritdoc />
