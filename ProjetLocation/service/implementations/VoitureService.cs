@@ -8,30 +8,21 @@ using ProjetLocation.service.interfaces;
 using ProjetLocation.exception.service;
 using ProjetLocation.dto;
 using ProjetLocation.exception.dao;
+using ProjetLocation.dao;
 
 
 namespace ProjetLocation.service.implementations
 {
     public class VoitureService : IVoitureService
     {
-        IVoitureDAO voitureDAO;
-
-        private IVoitureDAO getVoitureDAO()
-        {
-            return this.voitureDAO;
-        }
-
-        private void setVoitureDAO(IVoitureDAO voitureDAO)
-        {
-            this.voitureDAO = voitureDAO;
-        }
+        VoitureDAO voitureDAO = new VoitureDAO();
 
         public VoitureService()
         {
             
         }
         /// <inheritdoc />
-        int IVoitureService.addVoiture(VoitureDTO voitureDTO)
+        public int AddVoiture(VoitureDTO voitureDTO)
         {
             try
             {
@@ -44,7 +35,7 @@ namespace ProjetLocation.service.implementations
         }
 
         /// <inheritdoc />
-        VoitureDTO IVoitureService.readVoiture(int id)
+        public VoitureDTO ReadVoiture(int id)
         {
             try
             {
@@ -57,7 +48,7 @@ namespace ProjetLocation.service.implementations
         }
 
         /// <inheritdoc />
-        int IVoitureService.updateVoiture(VoitureDTO voitureDTO)
+        public int UpdateVoiture(VoitureDTO voitureDTO)
         {
             try
             {
@@ -70,7 +61,7 @@ namespace ProjetLocation.service.implementations
         }
 
         /// <inheritdoc />
-        int IVoitureService.deleteVoiture(int id)
+        public int DeleteVoiture(int id)
         {
             try
             {
@@ -83,7 +74,7 @@ namespace ProjetLocation.service.implementations
         }
 
         /// <inheritdoc />
-        List<VoitureDTO> IVoitureService.getAllVoitures()
+        public List<VoitureDTO> GetAllVoitures()
         {
             try
             {

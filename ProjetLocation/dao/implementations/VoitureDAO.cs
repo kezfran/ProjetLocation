@@ -120,13 +120,14 @@ namespace ProjetLocation.dao
         /// <inheritdoc />
         public int Delete(int id)
         {
+            int n = 0;
             try
             {
                 connexion.Open();
                 command.CommandText = DELETE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter("@idVoiture", id));
-                return command.ExecuteNonQuery();
+                n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
@@ -136,6 +137,7 @@ namespace ProjetLocation.dao
             {
                 connexion.Close();
             }
+            return n;
         }
 
         /// <inheritdoc />

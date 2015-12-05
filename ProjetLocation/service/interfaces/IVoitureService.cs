@@ -13,31 +13,34 @@ namespace ProjetLocation.service.interfaces
         /// Ajoute un DTO à la base de données.
         /// </summary>
         /// <param name="voitureDTO">Le DTO à ajouter</param>
-        int addVoiture(VoitureDTO voitureDTO);
+        /// <returns name="n">Le résultat de l'exécution en entier</returns>
+        int AddVoiture(VoitureDTO voitureDTO);
 
         /// <summary>
         /// Lit un DTO à partir de la base de données.
         /// </summary>
         /// <param name="id">L'id de la voiture à ajouter</param>
         /// <returns name="voitureDTO">Le DTO à retourner</returns>
-        VoitureDTO readVoiture(int id);
+        VoitureDTO ReadVoiture(int id);
 
         /// <summary>
         /// Met à jour un DTO dans la base de données.
         /// </summary>
         /// <param name="voitureDTO">Le DTO à mettre à jour</param>
-        int updateVoiture(VoitureDTO voitureDTO);
+        /// <returns name="n">Le résultat de l'exécution en entier</returns>
+        int UpdateVoiture(VoitureDTO voitureDTO);
 
         /// <summary>
         /// Supprime une voiture dans la base de données.
         /// </summary>
         /// <param name="id">L'id de la voiture à supprimer</param>
-        int deleteVoiture(int id);
+        /// <returns name="n">Le résultat de l'exécution en entier</returns>
+        int DeleteVoiture(int id);
 
         /// <summary>
         /// Lit tous les voitures de la base de données.
         /// </summary>
         /// <returns name="membres">La liste des membres à retourner</returns>
-        List<VoitureDTO> getAllVoitures();
+        List<VoitureDTO> GetAllVoitures();
     }
 }
