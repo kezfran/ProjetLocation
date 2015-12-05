@@ -43,7 +43,6 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
-                //command.Parameters.Add(new MySqlParameter("@idMembre", membreDTO.idMembre));
                 command.Parameters.Add(new MySqlParameter("@nom", membreDTO.nom));
                 command.Parameters.Add(new MySqlParameter("@telephone", membreDTO.telephone));
                 command.Parameters.Add(new MySqlParameter("@adresse", membreDTO.adresse));
