@@ -22,15 +22,23 @@ namespace ProjetLocation
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-            FactureService facture = new FactureService();
-            FactureDTO f = new FactureDTO();
+            LocationService location = new LocationService();
+            LocationDTO l = new LocationDTO();
+            MembreDTO m = new MembreDTO();
+            VoitureDTO v = new VoitureDTO();
 
-            f.LocationDTO.idLocation = 1;
-            f.DateFacture = DateTime.Now;
+            //l.IdLocation = 1;
+            //m.idMembre = 1;
+            //v.idVoiture = 1;
 
-            int n = facture.AddFacture(f);
+            //l.MembreDTO = m;
+            //l.VoitureDTO = v;
+            //l.DateLocation = DateTime.Now;
+            //l.DateRetour = DateTime.Now;
 
-            Console.WriteLine(n);
+            l = location.ReadLocation(1);
+
+            Console.WriteLine(l.IdLocation + " " + l.MembreDTO +" " + l.VoitureDTO + " " + l.DateLocation + " " + l.DateRetour);
             Console.Read();
         }
 

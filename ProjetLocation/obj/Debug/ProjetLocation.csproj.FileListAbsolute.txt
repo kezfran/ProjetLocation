@@ -15,4 +15,3 @@ C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLo
 \\psf\Home\Desktop\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.pdb
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\bin\Debug\LoginControl.dll
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.Login.resources
-C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.csprojResolveAssemblyReference.cache
