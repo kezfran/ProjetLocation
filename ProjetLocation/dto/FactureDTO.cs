@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ProjetLocation.dto
 {
-    class FactureDTO
+    public class FactureDTO
     {
-        public string idFacture { get; set; }
-        public string idLocation { get; set; }
-        public DateTime dateFacture { get; set; }
+        //LocationDTO locationDTO = new LocationDTO();
+
+        public int IdFacture { get; set; }
+        public LocationDTO LocationDTO { get; set; }
+        public DateTime DateFacture { get; set; }
     }
 }
