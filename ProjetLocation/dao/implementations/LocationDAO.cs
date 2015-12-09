@@ -5,9 +5,7 @@ using ProjetLocation.dto;
 using ProjetLocation.exception.dao;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProjetLocation.dao
 {
@@ -21,28 +19,24 @@ namespace ProjetLocation.dao
         private static string READ_REQUEST = @"SELECT * FROM location WHERE idLocation = @idLocation";
 
         private static string UPDATE_REQUEST = @"UPDATE location set idMembre = @idMembre, idVoiture = @idVoiture, dateLocation = @dateLocation, " +
-            "dateRetour = @dateRetour WHERE idMembre = @idLocation";
+            "dateRetour = @dateRetour WHERE idLocation = @idLocation";
 
         private static string DELETE_REQUEST = @"DELETE from location WHERE idLocation = @idLocation";
 
         private static string GET_ALL_REQUEST = @"SELECT idLocation,idMembre,idVoiture,dateLocation,dateRetour "
             + "FROM location";
 
-        private static String FIND_BY_MEMBRE = "SELECT idLocation, idMembre, idVoiture, dateLocation, dateRetour FROM location " +
+        private static String FIND_BY_MEMBRE = @"SELECT idLocation,idMembre,idVoiture,dateLocation,dateRetour FROM location " +
             "WHERE idMembre = @idMembre";
-        //AND dateRetour IS NULL ORDER BY datePret ASC
 
         private static String FIND_BY_VOITURE = "SELECT idLocation, idMembre, idVoiture, dateLocation, dateRetour FROM location " +
             "WHERE idVoiture = @idVoiture";
-        //AND dateRetour IS NULL ORDER BY datePret ASC
 
-        private static String FIND_BY_DATE_LOCATION = "SELECT idLocation, idMembre, idVoiture, dateLocation, dateRetour FROM location " +
-            "WHERE dateLocation = @dateLocation";
-        //AND dateRetour IS NULL ORDER BY datePret ASC
+        //private static String FIND_BY_DATE_LOCATION = "SELECT idLocation, idMembre, idVoiture, dateLocation, dateRetour FROM location " +
+        //    "WHERE dateLocation = @dateLocation";
 
-        private static String FIND_BY_DATE_RETOUR = "SELECT idLocation, idMembre, idVoiture, dateLocation, dateRetour FROM location " +
-            "WHERE dateRetour = @dateRetour";
-        //AND dateRetour IS NULL ORDER BY datePret ASC
+        //private static String FIND_BY_DATE_RETOUR = "SELECT idLocation, idMembre, idVoiture, dateLocation, dateRetour FROM location " +
+        //    "WHERE dateRetour = @dateRetour";
 
         public LocationDAO()
         {
@@ -59,10 +53,10 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter("@idMembre", locationDTO.MembreDTO.idMembre));
-                command.Parameters.Add(new MySqlParameter("@idVoiture", locationDTO.VoitureDTO.idVoiture));
-                command.Parameters.Add(new MySqlParameter("@dateLocation", locationDTO.DateLocation));
-                command.Parameters.Add(new MySqlParameter("@dateRetour", locationDTO.DateRetour));
+                command.Parameters.Add(new MySqlParameter("@idMembre", locationDTO.IdMembre));
+                command.Parameters.Add(new MySqlParameter("@idVoiture", locationDTO.IdVoiture));
+                command.Parameters.Add(new MySqlParameter("@dateLocation", Convert.ToDateTime(locationDTO.DateLocation)));
+                command.Parameters.Add(new MySqlParameter("@dateRetour", Convert.ToDateTime(locationDTO.DateRetour)));
 
                 n = command.ExecuteNonQuery();
             }
@@ -80,7 +74,7 @@ namespace ProjetLocation.dao
         /// <inheritdoc />
         public LocationDTO Read(int id)
         {
-            LocationDTO locationDTO = new LocationDTO();            
+            LocationDTO locationDTO = new LocationDTO();
             try
             {
                 connexion.Open();
@@ -92,17 +86,10 @@ namespace ProjetLocation.dao
                 if (dr.Read())
                 {
                     locationDTO.IdLocation = dr.GetInt32(0);
-
-                    MembreDTO membre = new MembreDTO();
-                    membre.idMembre = dr.GetInt32(1);
-
-                    VoitureDTO voiture = new VoitureDTO();
-                    voiture.idVoiture = dr.GetInt32(2);
-
-                    locationDTO.MembreDTO = membre;
-                    locationDTO.VoitureDTO = voiture;
-                    locationDTO.DateLocation = dr.GetDateTime(3);
-                    locationDTO.DateRetour = dr.GetDateTime(4);
+                    locationDTO.IdMembre = dr.GetInt32(1);
+                    locationDTO.IdVoiture = dr.GetInt32(2);
+                    locationDTO.DateLocation = dr.GetDateTime(3).ToString();
+                    locationDTO.DateRetour = dr.GetMySqlDateTime(4).ToString();
                 }
             }
             catch (MySqlException mySqlException)
@@ -117,7 +104,7 @@ namespace ProjetLocation.dao
         }
 
         /// <inheritdoc />
-        public int Update(LocationDTO locationDTO,int id)
+        public int Update(LocationDTO locationDTO, int id)
         {
             int n = 0;
             try
@@ -125,8 +112,8 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = UPDATE_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter("@idMembre", locationDTO.MembreDTO.idMembre));
-                command.Parameters.Add(new MySqlParameter("@idVoiture", locationDTO.VoitureDTO.idVoiture));
+                command.Parameters.Add(new MySqlParameter("@idMembre", locationDTO.IdMembre));
+                command.Parameters.Add(new MySqlParameter("@idVoiture", locationDTO.IdVoiture));
                 command.Parameters.Add(new MySqlParameter("@dateLocation", locationDTO.DateLocation));
                 command.Parameters.Add(new MySqlParameter("@dateRetour", locationDTO.DateRetour));
                 command.Parameters.Add(new MySqlParameter("@idLocation", id));
@@ -171,7 +158,7 @@ namespace ProjetLocation.dao
         {
             List<LocationDTO> locations = new List<LocationDTO>();
 
-            LocationDTO locationDTO = new LocationDTO();            
+            LocationDTO locationDTO = new LocationDTO();
             try
             {
                 connexion.Open();
@@ -183,15 +170,12 @@ namespace ProjetLocation.dao
                     locationDTO.IdLocation = dr.GetInt32(0);
 
                     MembreDTO membre = new MembreDTO();
-                    membre.idMembre = dr.GetInt32(1);
+                    locationDTO.IdMembre = dr.GetInt32(1);
 
                     VoitureDTO voiture = new VoitureDTO();
-                    voiture.idVoiture = dr.GetInt32(2);
-
-                    locationDTO.MembreDTO = membre;
-                    locationDTO.VoitureDTO = voiture;
-                    locationDTO.DateLocation = dr.GetDateTime(3);
-                    locationDTO.DateRetour = dr.GetDateTime(4);
+                    locationDTO.IdVoiture = dr.GetInt32(2);
+                    locationDTO.DateLocation = dr.GetDateTime(3).ToString();
+                    locationDTO.DateRetour = dr.GetDateTime(4).ToString();
                     locations.Add(locationDTO);
                 }
             }
@@ -205,6 +189,8 @@ namespace ProjetLocation.dao
             }
             return locations;
         }
+
+        /// <inheritdoc />
         public List<LocationDTO> FindByMembre(int idMembre)
         {
             List<LocationDTO> locations = new List<LocationDTO>();
@@ -214,30 +200,24 @@ namespace ProjetLocation.dao
             {
                 connexion.Open();
                 command.CommandText = FIND_BY_MEMBRE;
+                command.Parameters.Add(new MySqlParameter("@idMembre", idMembre));
 
                 MySqlDataReader dr = command.ExecuteReader();
 
                 while (dr.Read())
                 {
                     locationDTO.IdLocation = dr.GetInt32(0);
-
-                    MembreDTO membre = new MembreDTO();
-                    membre.idMembre = dr.GetInt32(1);
-
-                    VoitureDTO voiture = new VoitureDTO();
-                    voiture.idVoiture = dr.GetInt32(2);
-
-                    locationDTO.MembreDTO = membre;
-                    locationDTO.VoitureDTO = voiture;
-                    locationDTO.DateLocation = dr.GetDateTime(3);
-                    locationDTO.DateRetour = dr.GetDateTime(4);
+                    locationDTO.IdMembre = dr.GetInt32(1);
+                    locationDTO.IdVoiture = dr.GetInt32(2);
+                    locationDTO.DateLocation = dr.GetDateTime(3).ToString();
+                    locationDTO.DateRetour = dr.GetDateTime(4).ToString();
 
                     locations.Add(locationDTO);
                 }
             }
             catch (MySqlException mySqlException)
             {
-                throw new DAOException(mySqlException);
+                MessageBox.Show(mySqlException.Message);
             }
             finally
             {
@@ -246,6 +226,7 @@ namespace ProjetLocation.dao
             return locations;
         }
 
+        /// <inheritdoc />
         public List<LocationDTO> FindByVoiture(int idVoiture)
         {
             List<LocationDTO> locations = new List<LocationDTO>();
@@ -254,23 +235,17 @@ namespace ProjetLocation.dao
             {
                 connexion.Open();
                 command.CommandText = FIND_BY_VOITURE;
+                command.Parameters.Add(new MySqlParameter("@idVoiture", idVoiture));
 
                 MySqlDataReader dr = command.ExecuteReader();
 
                 while (dr.Read())
                 {
                     locationDTO.IdLocation = dr.GetInt32(0);
-
-                    MembreDTO membre = new MembreDTO();
-                    membre.idMembre = dr.GetInt32(1);
-
-                    VoitureDTO voiture = new VoitureDTO();
-                    voiture.idVoiture = dr.GetInt32(2);
-
-                    locationDTO.MembreDTO = membre;
-                    locationDTO.VoitureDTO = voiture;
-                    locationDTO.DateLocation = dr.GetDateTime(3);
-                    locationDTO.DateRetour = dr.GetDateTime(4);
+                    locationDTO.IdMembre = dr.GetInt32(1);
+                    locationDTO.IdVoiture = dr.GetInt32(2);
+                    locationDTO.DateLocation = dr.GetDateTime(3).ToString();
+                    locationDTO.DateRetour = dr.GetDateTime(4).ToString();
                     locations.Add(locationDTO);
                 }
             }
@@ -284,81 +259,83 @@ namespace ProjetLocation.dao
             }
             return locations;
         }
-        public List<LocationDTO> FindByDateLocation(DateTime dateLocation)
-        {
-            List<LocationDTO> locations = new List<LocationDTO>();
-            LocationDTO locationDTO = new LocationDTO();
-            try
-            {
-                connexion.Open();
-                command.CommandText = FIND_BY_DATE_LOCATION;
+        //public List<LocationDTO> FindByDateLocation(DateTime dateLocation)
+        //{
+        //    List<LocationDTO> locations = new List<LocationDTO>();
+        //    LocationDTO locationDTO = new LocationDTO();
+        //    try
+        //    {
+        //        connexion.Open();
+        //        command.CommandText = FIND_BY_DATE_LOCATION;
+        //        command.Parameters.Add(new MySqlParameter("@dateLocation", dateLocation));
 
-                MySqlDataReader dr = command.ExecuteReader();
+        //        MySqlDataReader dr = command.ExecuteReader();
 
-                while(dr.NextResult()){
-                    locationDTO.IdLocation = dr.GetInt32(0);
+        //        while(dr.NextResult()){
+        //            locationDTO.IdLocation = dr.GetInt32(0);
 
-                    MembreDTO membre = new MembreDTO();
-                    membre.idMembre = dr.GetInt32(1);
+        //            //MembreDTO membre = new MembreDTO();
+        //            locationDTO.IdMembre = dr.GetInt32(1);
 
-                    VoitureDTO voiture = new VoitureDTO();
-                    voiture.idVoiture = dr.GetInt32(2);
+        //            //VoitureDTO voiture = new VoitureDTO();
+        //            locationDTO.IdVoiture = dr.GetInt32(2);
 
-                    locationDTO.MembreDTO = membre;
-                    locationDTO.VoitureDTO = voiture;
-                    locationDTO.DateLocation = dr.GetDateTime(3);
-                    locationDTO.DateRetour = dr.GetDateTime(4);
-                    locations.Add(locationDTO);
-                }
-            }
-            catch (MySqlException mySqlException)
-            {
-                throw new DAOException(mySqlException);
-            }
-            finally
-            {
-                connexion.Close();
-            }
-            return locations;
-        }
+        //            //locationDTO. = membre;
+        //            //locationDTO.VoitureDTO = voiture;
+        //            locationDTO.DateLocation = dr.GetDateTime(3).ToString();
+        //            locationDTO.DateRetour = dr.GetDateTime(4).ToString();
+        //            locations.Add(locationDTO);
+        //        }
+        //    }
+        //    catch (MySqlException mySqlException)
+        //    {
+        //        throw new DAOException(mySqlException);
+        //    }
+        //    finally
+        //    {
+        //        connexion.Close();
+        //    }
+        //    return locations;
+        //}
 
-        public List<LocationDTO> FindByDateRetour(DateTime dateRetour)
-        {
-            List<LocationDTO> locations = new List<LocationDTO>();
-            LocationDTO locationDTO = new LocationDTO();
-            try
-            {
-                connexion.Open();
-                command.CommandText = FIND_BY_DATE_RETOUR;
+        //public List<LocationDTO> FindByDateRetour(String dateRetour)
+        //{
+        //    List<LocationDTO> locations = new List<LocationDTO>();
+        //    LocationDTO locationDTO = new LocationDTO();
+        //    try
+        //    {
+        //        connexion.Open();
+        //        command.CommandText = FIND_BY_DATE_RETOUR;
+        //        command.Parameters.Add(new MySqlParameter("@dateRetour", dateRetour));
 
-                MySqlDataReader dr = command.ExecuteReader();
+        //        MySqlDataReader dr = command.ExecuteReader();
 
-                while (dr.NextResult())
-                {
-                    locationDTO.IdLocation = dr.GetInt32(0);
+        //        while (dr.NextResult())
+        //        {
+        //            locationDTO.IdLocation = dr.GetInt32(0);
 
-                    MembreDTO membre = new MembreDTO();
-                    membre.idMembre = dr.GetInt32(1);
+        //            //MembreDTO membre = new MembreDTO();
+        //            locationDTO.IdMembre = dr.GetInt32(1);
 
-                    VoitureDTO voiture = new VoitureDTO();
-                    voiture.idVoiture = dr.GetInt32(2);
+        //            //VoitureDTO voiture = new VoitureDTO();
+        //            locationDTO.IdVoiture = dr.GetInt32(2);
 
-                    locationDTO.MembreDTO = membre;
-                    locationDTO.VoitureDTO = voiture;
-                    locationDTO.DateLocation = dr.GetDateTime(3);
-                    locationDTO.DateRetour = dr.GetDateTime(4);
-                    locations.Add(locationDTO);
-                }
-            }
-            catch (MySqlException mySqlException)
-            {
-                throw new DAOException(mySqlException);
-            }
-            finally
-            {
-                connexion.Close();
-            }
-            return locations;
-        }
+        //            //locationDTO.MembreDTO = membre;
+        //            //locationDTO.VoitureDTO = voiture;
+        //            locationDTO.DateLocation = dr.GetDateTime(3).ToString();
+        //            locationDTO.DateRetour = dr.GetDateTime(4).ToString();
+        //            locations.Add(locationDTO);
+        //        }
+        //    }
+        //    catch (MySqlException mySqlException)
+        //    {
+        //        throw new DAOException(mySqlException);
+        //    }
+        //    finally
+        //    {
+        //        connexion.Close();
+        //    }
+        //    return locations;
+        //}
     }
 }

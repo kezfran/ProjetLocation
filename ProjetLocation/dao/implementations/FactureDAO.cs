@@ -45,7 +45,7 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter("@idLocation", factureDTO.LocationDTO.idLocation));
+                command.Parameters.Add(new MySqlParameter("@idLocation", factureDTO.LocationDTO.IdLocation));
                 command.Parameters.Add(new MySqlParameter("@dateFacture", factureDTO.DateFacture));
                 n = command.ExecuteNonQuery();
             }
@@ -76,7 +76,7 @@ namespace ProjetLocation.dao
                 if (dr.Read())
                 {
                     factureDTO.IdFacture = dr.GetInt32(0);
-                    location.idLocation = dr.GetInt32(1);
+                    location.IdLocation = dr.GetInt32(1);
                     factureDTO.LocationDTO = location;
                     factureDTO.DateFacture = dr.GetDateTime(2);
                 }
@@ -93,7 +93,7 @@ namespace ProjetLocation.dao
         }
 
         /// <inheritdoc />
-        public int Update(FactureDTO factureDTO,int id)
+        public int Update(FactureDTO factureDTO, int id)
         {
             int n = 0;
             try
@@ -101,7 +101,7 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = UPDATE_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter("@idLocation", factureDTO.LocationDTO.idLocation));
+                command.Parameters.Add(new MySqlParameter("@idLocation", factureDTO.LocationDTO.IdLocation));
                 command.Parameters.Add(new MySqlParameter("@dateFacture", factureDTO.DateFacture));
                 command.Parameters.Add(new MySqlParameter("@idFacture", id));
                 n = command.ExecuteNonQuery();
@@ -153,9 +153,10 @@ namespace ProjetLocation.dao
 
                 MySqlDataReader dr = command.ExecuteReader();
 
-                while(dr.Read()){
+                while (dr.Read())
+                {
                     factureDTO.IdFacture = dr.GetInt32(0);
-                    location.idLocation = dr.GetInt32(1);
+                    location.IdLocation = dr.GetInt32(1);
                     factureDTO.LocationDTO = location;
                     factureDTO.DateFacture = dr.GetDateTime(2);
                     factures.Add(factureDTO);

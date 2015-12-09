@@ -1,6 +1,8 @@
-﻿using ProjetLocation.dao;
+﻿using MySql.Data.Types;
+using ProjetLocation.dao;
 using ProjetLocation.dto;
 using ProjetLocation.exception.dao;
+using ProjetLocation.service.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProjetLocation.service.implementations
 {
-    public class LocationService
+    public class LocationService : ILocationService
     {
         LocationDAO locationDAO = new LocationDAO();
 
@@ -17,6 +19,7 @@ namespace ProjetLocation.service.implementations
         {
         }
 
+        /// <inheritdoc />
         public int AddLocation(LocationDTO locationDTO)
         {
             try
@@ -29,6 +32,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
+        /// <inheritdoc />
         public LocationDTO ReadLocation(int id)
         {
             try
@@ -41,11 +45,12 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        public int UpdateLocation(LocationDTO locationDTO,int id)
+        /// <inheritdoc />
+        public int UpdateLocation(LocationDTO locationDTO, int id)
         {
             try
             {
-                return locationDAO.Update(locationDTO,id);
+                return locationDAO.Update(locationDTO, id);
             }
             catch (DAOException daoException)
             {
@@ -53,6 +58,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
+        /// <inheritdoc />
         public int DeleteLocation(int id)
         {
             try
@@ -65,6 +71,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
+        /// <inheritdoc />
         public List<LocationDTO> GetAllLocations()
         {
             try
@@ -77,6 +84,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
+        /// <inheritdoc />
         public List<LocationDTO> FindByMembre(int id)
         {
             try
@@ -89,6 +97,7 @@ namespace ProjetLocation.service.implementations
             }
         }
 
+        /// <inheritdoc />
         public List<LocationDTO> FindByVoiture(int id)
         {
             try
@@ -101,28 +110,28 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        public List<LocationDTO> FindByDateLocation(DateTime dateLocation)
-        {
-            try
-            {
-                return locationDAO.FindByDateLocation(dateLocation);
-            }
-            catch (DAOException daoException)
-            {
-                throw new ServiceException(daoException.Message);
-            }
-        }
+        //public List<LocationDTO> FindByDateLocation(DateTime dateLocation)
+        //{
+        //    try
+        //    {
+        //        return locationDAO.FindByDateLocation(dateLocation);
+        //    }
+        //    catch (DAOException daoException)
+        //    {
+        //        throw new ServiceException(daoException.Message);
+        //    }
+        //}
 
-        public List<LocationDTO> FindByDateRetour(DateTime dateRetour)
-        {
-            try
-            {
-                return locationDAO.FindByDateRetour(dateRetour);
-            }
-            catch (DAOException daoException)
-            {
-                throw new ServiceException(daoException.Message);
-            }
-        }
+        //public List<LocationDTO> FindByDateRetour(String dateRetour)
+        //{
+        //    try
+        //    {
+        //        return locationDAO.FindByDateRetour(dateRetour);
+        //    }
+        //    catch (DAOException daoException)
+        //    {
+        //        throw new ServiceException(daoException.Message);
+        //    }
+        //}
     }
 }
