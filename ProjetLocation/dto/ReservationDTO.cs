@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProjetLocation.dto
 {
-    class ReservationDTO
+    public class ReservationDTO
     {
-        public string idReservation { get; set; }
-        public string idMembre { get; set; }
-        public string idVoiture { get; set; }
-        public string dateLocation { get; set; }
+        public int IdReservation { get; set; }
+        public int IdMembre { get; set; }
+        public int IdVoiture { get; set; }
+        public string DateReservation { get; set; }
     }
 }

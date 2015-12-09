@@ -97,10 +97,12 @@
     <Compile Include="service\implementations\FactureService.cs" />
     <Compile Include="service\implementations\LocationService.cs" />
     <Compile Include="service\implementations\MembreService.cs" />
+    <Compile Include="service\implementations\ReservationService.cs" />
     <Compile Include="service\implementations\VoitureService.cs" />
     <Compile Include="service\interfaces\IFactureService.cs" />
     <Compile Include="service\interfaces\ILocationService.cs" />
     <Compile Include="service\interfaces\IMembreService.cs" />
+    <Compile Include="service\interfaces\IReservationService.cs" />
     <Compile Include="service\interfaces\IVoitureService.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

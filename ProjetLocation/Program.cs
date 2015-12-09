@@ -20,15 +20,7 @@ namespace ProjetLocation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
-
-            FactureService facture = new FactureService();
-            FactureDTO f = new FactureDTO();
-
-            int n = facture.DeleteFacture(2);
-
-            Console.WriteLine(n);
-            Console.Read();
+            Application.Run(new Form1());
         }
 
        

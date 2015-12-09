@@ -8,133 +8,232 @@ using ProjetLocation.dto;
 using MySql.Data.MySqlClient;
 using ProjetLocation.exception.dto;
 using ProjetLocation.exception.dao;
+using ProjetLocation.dao.interfaces;
 
 namespace ProjetLocation.dao
 {
-    class ReservationDAO
+    public class ReservationDAO : IReservationDAO
     {
-        private static string ADD_REQUEST = "INSERT into reservation (idReservation,idMembre,idVoiture,dateReservation) " +
-            "VALUES(:idReservation, :idMembre, :idVoiture, :dateReservation)";
+        public Connexion connexion { get; set; }
+        public MySqlCommand command { get; set; }
+        private static string ADD_REQUEST = @"INSERT into reservation (idMembre,idVoiture,dateReservation) " +
+            "VALUES(@idMembre, @idVoiture, @dateReservation)";
 
-        private static string READ_REQUEST = "SELECT * FROM reservation WHERE idReservation = :idReservation";
+        private static string READ_REQUEST = @"SELECT * FROM reservation WHERE idReservation = @idReservation";
 
-        private static string UPDATE_REQUEST = "UPDATE reservation set idMembre = :idMembre, idVoiture = :idVoiture, dateLocation = :dateLocation WHERE idReservation = :idReservation";
+        private static string UPDATE_REQUEST = @"UPDATE reservation set idMembre = @idMembre, idVoiture = @idVoiture, dateReservation = @dateReservation " +
+            "WHERE idReservation = @idReservation";
 
-        private static string DELETE_REQUEST = "DELETE from reservation WHERE idReservation = :idReservation";
+        private static string DELETE_REQUEST = @"DELETE from reservation WHERE idReservation = @idReservation";
 
-            public ReservationDAO()
+        private static string GET_ALL_REQUEST = @"SELECT idReservation,idMembre,idVoiture,dateReservation "
+            + "FROM reservation";
+
+        private static String FIND_BY_MEMBRE = @"SELECT idReservation,idMembre,idVoiture,dateReservation FROM reservation " +
+            "WHERE idMembre = @idMembre";
+
+        private static String FIND_BY_VOITURE = @"SELECT idReservation,idMembre,idVoiture,dateReservation FROM reservation " +
+            "WHERE idVoiture = @idVoiture";
+
+        public ReservationDAO()
         {
-
+            connexion = new Connexion();
+            command = connexion.Connection.CreateCommand();
         }
 
-            public void Add(Connexion connexion, ReservationDTO reservationDTO)
+        public int Add(ReservationDTO reservationDTO)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (reservationDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            reservationDTO = new ReservationDTO();
+            int n = 0;
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
+                connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter(":idReservation", reservationDTO.idReservation));
-                command.Parameters.Add(new MySqlParameter(":idMembre", reservationDTO.idMembre));
-                command.Parameters.Add(new MySqlParameter(":idVoiture", reservationDTO.idVoiture));
-                command.Parameters.Add(new MySqlParameter(":dateLocation", reservationDTO.dateLocation));
-                command.ExecuteNonQuery();
+                command.Parameters.Add(new MySqlParameter("@idMembre", reservationDTO.IdMembre));
+                command.Parameters.Add(new MySqlParameter("@idVoiture", reservationDTO.IdVoiture));
+                command.Parameters.Add(new MySqlParameter("@dateReservation", reservationDTO.DateReservation));
+                n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
-                throw new DAOException(mySqlException);
+                throw new DAOException(mySqlException.Message);
             }
+            finally
+            {
+                connexion.Close();
+            }
+            return n;
         }
 
-            public void Read(Connexion connexion, ReservationDTO reservationDTO)
+        public ReservationDTO Read(int id)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (reservationDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            reservationDTO = new ReservationDTO();
+            ReservationDTO reservationDTO = new ReservationDTO();
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
+                connexion.Open();
                 command.CommandText = READ_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter(":idReservation", reservationDTO.idReservation));
-                command.ExecuteNonQuery();
+                command.Parameters.Add(new MySqlParameter("@idReservation", id));
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while(dr.Read()){
+                    reservationDTO.IdReservation = dr.GetInt32(0);
+                    reservationDTO.IdMembre = dr.GetInt32(1);
+                    reservationDTO.IdVoiture = dr.GetInt32(2);
+                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                }
             }
             catch (MySqlException mySqlException)
             {
-                throw new DAOException(mySqlException);
+                throw new DAOException(mySqlException.Message);
             }
+            finally
+            {
+                connexion.Close();
+            }
+            return reservationDTO;
         }
 
-            public void Update(Connexion connexion, ReservationDTO reservationDTO)
+        public int Update(ReservationDTO reservationDTO,int id)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (reservationDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            reservationDTO = new ReservationDTO();
+            int n = 0;
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
+                connexion.Open();
                 command.CommandText = UPDATE_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter(":idMembre", reservationDTO.idMembre));
-                command.Parameters.Add(new MySqlParameter(":idVoiture", reservationDTO.idVoiture));
-                command.Parameters.Add(new MySqlParameter(":dateLocation", reservationDTO.dateLocation));
-                command.Parameters.Add(new MySqlParameter(":idReservation", reservationDTO.idReservation));
-                command.ExecuteNonQuery();
+                command.Parameters.Add(new MySqlParameter("@idMembre", reservationDTO.IdMembre));
+                command.Parameters.Add(new MySqlParameter("@idVoiture", reservationDTO.IdVoiture));
+                command.Parameters.Add(new MySqlParameter("@dateReservation", reservationDTO.DateReservation));
+                command.Parameters.Add(new MySqlParameter("@idReservation", id));
+                n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
-                throw new DAOException(mySqlException);
+                throw new DAOException(mySqlException.Message);
             }
+            finally
+            {
+                connexion.Close();
+            }
+            return n;
         }
 
-            public void Delete(Connexion connexion, ReservationDTO reservationDTO)
+        public int Delete(int id)
         {
-            if (connexion == null)
-            {
-                throw new InvalidConnexionException("La connexion ne peut être null!");
-            }
-            if (reservationDTO == null)
-            {
-                throw new InvalidDTOException("Le DTO ne peut être null!");
-            }
-            reservationDTO = new ReservationDTO();
+            int n = 0;
             try
             {
-                MySqlCommand command = connexion.Connection.CreateCommand();
-
+                connexion.Open();
                 command.CommandText = DELETE_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter(":idReservation", reservationDTO.idReservation));
-                command.ExecuteNonQuery();
+                command.Parameters.Add(new MySqlParameter("@idReservation", id));
+                n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
             {
-                throw new DAOException(mySqlException);
+                throw new DAOException(mySqlException.Message);
             }
+            finally
+            {
+                connexion.Close();
+            }
+            return n;
+        }
+
+        public List<ReservationDTO> GetAll()
+        {
+            List<ReservationDTO> reservations = new List<ReservationDTO>();
+            ReservationDTO reservationDTO = new ReservationDTO();
+            try
+            {
+                connexion.Open();
+                command.CommandText = GET_ALL_REQUEST;
+
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    reservationDTO.IdReservation = dr.GetInt32(0);
+                    reservationDTO.IdMembre = dr.GetInt32(1);
+                    reservationDTO.IdVoiture = dr.GetInt32(2);
+                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                    reservations.Add(reservationDTO);
+                }
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException.Message);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+            return reservations;
+        }
+
+        public List<ReservationDTO> FindByMembre(int id)
+        {
+            List<ReservationDTO> reservations = new List<ReservationDTO>();
+            ReservationDTO reservationDTO = new ReservationDTO();
+            try
+            {
+                connexion.Open();
+                command.CommandText = FIND_BY_MEMBRE;
+                command.Parameters.Add(new MySqlParameter("@idMembre", id));
+
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    reservationDTO.IdReservation = dr.GetInt32(0);
+                    reservationDTO.IdMembre = dr.GetInt32(1);
+                    reservationDTO.IdVoiture = dr.GetInt32(2);
+                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                    reservations.Add(reservationDTO);
+                }
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException.Message);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+            return reservations;
+        }
+
+        public List<ReservationDTO> FindByVoiture(int id)
+        {
+            List<ReservationDTO> reservations = new List<ReservationDTO>();
+            ReservationDTO reservationDTO = new ReservationDTO();
+            try
+            {
+                connexion.Open();
+                command.CommandText = FIND_BY_VOITURE;
+                command.Parameters.Add(new MySqlParameter("@idVoiture", id));
+
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    reservationDTO.IdReservation = dr.GetInt32(0);
+                    reservationDTO.IdMembre = dr.GetInt32(1);
+                    reservationDTO.IdVoiture = dr.GetInt32(2);
+                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                    reservations.Add(reservationDTO);
+                }
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException.Message);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+            return reservations;
         }
     }
 }
