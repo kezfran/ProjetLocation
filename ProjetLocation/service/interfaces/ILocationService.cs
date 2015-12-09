@@ -35,7 +35,7 @@ namespace ProjetLocation.service.interfaces
         /// </summary>
         /// <param name="id">L'id de la location à supprimer</param>
         int DeleteLocation(int id);
-        List<LocationDTO> GetAll();
+        List<LocationDTO> GetAllLocations();
 
         /// <summary>
         /// Lit toutes les locations de la base de données.

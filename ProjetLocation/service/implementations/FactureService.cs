@@ -82,5 +82,18 @@ namespace ProjetLocation.service.implementations
                 throw new ServiceException(daoException.Message);
             }
         }
+
+        /// <inheritdoc />
+        public List<FactureDTO> FindByLocation(int id)
+        {
+            try
+            {
+                return factureDAO.FindByLocation(id);
+            }
+            catch (DAOException daoException)
+            {
+                throw new ServiceException(daoException.Message);
+            }
+        }
     }
 }

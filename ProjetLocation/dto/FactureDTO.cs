@@ -8,10 +8,8 @@ namespace ProjetLocation.dto
 {
     public class FactureDTO
     {
-        //LocationDTO locationDTO = new LocationDTO();
-
         public int IdFacture { get; set; }
-        public LocationDTO LocationDTO { get; set; }
-        public DateTime DateFacture { get; set; }
+        public int IdLocation { get; set; }
+        public String DateFacture { get; set; }
     }
 }

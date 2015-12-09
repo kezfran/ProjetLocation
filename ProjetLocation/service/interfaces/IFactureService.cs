@@ -40,5 +40,12 @@ namespace ProjetLocation.service.interfaces
         /// </summary>
         /// <returns name="factures">La liste des factures à retourner</returns>
         List<FactureDTO> GetAllFactures();
+
+        /// <summary>
+        /// Lit toutes les factures correspondant à une location donnée.
+        /// </summary>
+        /// <param name="id">L'id de la facture à utiliser</param>
+        /// <returns name="factures">La liste des factures à retourner</returns>
+        List<FactureDTO> FindByLocation(int id);
     }
 }
