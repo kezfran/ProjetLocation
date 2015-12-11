@@ -48,11 +48,11 @@ namespace ProjetLocation.service.implementations
         }
 
         /// <inheritdoc />
-        public int UpdateVoiture(VoitureDTO voitureDTO)
+        public int UpdateVoiture(VoitureDTO voitureDTO,int id)
         {
             try
             {
-                return voitureDAO.Update(voitureDTO);
+                return voitureDAO.Update(voitureDTO,id);
             }
             catch (DAOException daoException)
             {

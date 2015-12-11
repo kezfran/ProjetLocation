@@ -27,8 +27,9 @@ namespace ProjetLocation.dao.interfaces
         /// Met à jour une voiture dans la base de données.
         /// </summary>
         /// <param name="membreDTO">Le DTO à mettre à jour</param>
+        /// <param name="id">L'id de la voiture à mettre à jour</param>
         /// <returns name="n">Le résultat de l'exécution en entier</returns>
-        int Update(VoitureDTO voitureDTO);
+        int Update(VoitureDTO voitureDTO,int id);
 
         /// <summary>
         /// Supprime une voiture dans la base de données.

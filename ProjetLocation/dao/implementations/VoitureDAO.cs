@@ -44,7 +44,6 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = ADD_REQUEST;
 
-                command.Parameters.Add(new MySqlParameter("@iDvoiture", voitureDTO.idVoiture));
                 command.Parameters.Add(new MySqlParameter("@marque", voitureDTO.marque));
                 command.Parameters.Add(new MySqlParameter("@modele", voitureDTO.modele));
                 command.Parameters.Add(new MySqlParameter("@annee", voitureDTO.annee));
@@ -77,7 +76,7 @@ namespace ProjetLocation.dao
                     voitureDTO.idVoiture = dr.GetInt32(0);
                     voitureDTO.marque = dr.GetString(1);
                     voitureDTO.modele = dr.GetString(2);
-                    voitureDTO.annee = dr.GetDateTime(3);
+                    voitureDTO.annee = dr.GetDateTime(3).ToString();
                 }
             }
             catch (MySqlException mySqlException)
@@ -92,7 +91,7 @@ namespace ProjetLocation.dao
         }
 
         /// <inheritdoc />
-        public int Update(VoitureDTO voitureDTO)
+        public int Update(VoitureDTO voitureDTO, int id)
         {
             int n = 0;
             try
@@ -103,7 +102,7 @@ namespace ProjetLocation.dao
                 command.Parameters.Add(new MySqlParameter("@marque", voitureDTO.marque));
                 command.Parameters.Add(new MySqlParameter("@modele", voitureDTO.modele));
                 command.Parameters.Add(new MySqlParameter("@annee", voitureDTO.annee));
-                command.Parameters.Add(new MySqlParameter("@idVoiture", voitureDTO.idVoiture));
+                command.Parameters.Add(new MySqlParameter("@idVoiture", id));
                 n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
@@ -156,7 +155,7 @@ namespace ProjetLocation.dao
                     voitureDTO.idVoiture = dr.GetInt32(0);
                     voitureDTO.marque = dr.GetString(1);
                     voitureDTO.modele = dr.GetString(2);
-                    voitureDTO.annee = dr.GetDateTime(3);
+                    voitureDTO.annee = dr.GetDateTime(3).ToString();
                     voitures.Add(voitureDTO);
                 }
             }

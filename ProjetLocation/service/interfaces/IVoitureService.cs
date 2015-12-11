@@ -28,7 +28,7 @@ namespace ProjetLocation.service.interfaces
         /// </summary>
         /// <param name="voitureDTO">Le DTO à mettre à jour</param>
         /// <returns name="n">Le résultat de l'exécution en entier</returns>
-        int UpdateVoiture(VoitureDTO voitureDTO);
+        int UpdateVoiture(VoitureDTO voitureDTO,int id);
 
         /// <summary>
         /// Supprime une voiture dans la base de données.

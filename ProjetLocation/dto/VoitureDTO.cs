@@ -11,6 +11,6 @@ namespace ProjetLocation.dto
         public int idVoiture { get; set; }
         public string marque { get; set; }
         public string modele { get; set; }
-        public DateTime annee { get; set; }
+        public string annee { get; set; }
     }
 }

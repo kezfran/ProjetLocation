@@ -20,7 +20,16 @@ namespace ProjetLocation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Form1());
+
+            VoitureService voiture = new VoitureService();
+            VoitureDTO v = new VoitureDTO();
+
+            int n = voiture.DeleteVoiture(2);
+            //List<VoitureDTO> liste = voiture.GetAllVoitures();
+
+            Console.WriteLine(n);
+            Console.Read();
         }
 
        
