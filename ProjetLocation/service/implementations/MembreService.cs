@@ -44,11 +44,11 @@ namespace ProjetLocation.service.implementations
             }
         }
 
-        public int UpdateMembre(MembreDTO membreDTO)
+        public int UpdateMembre(MembreDTO membreDTO,int id)
         {
             try
             {
-                return membreDAO.Update(membreDTO);
+                return membreDAO.Update(membreDTO,id);
             }
             catch (DAOException daoException)
             {

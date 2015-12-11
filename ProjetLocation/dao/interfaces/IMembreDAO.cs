@@ -26,7 +26,7 @@ namespace ProjetLocation.dao.interfaces
         /// Met à jour un membre dans la base de données.
         /// </summary>
         /// <param name="membreDTO">Le membre à mettre à jour</param>
-        int Update(MembreDTO membreDTO);
+        int Update(MembreDTO membreDTO,int id);
 
         /// <summary>
         /// Efface un membre dans la base de données.

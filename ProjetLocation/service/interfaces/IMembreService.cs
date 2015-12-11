@@ -25,7 +25,7 @@ namespace ProjetLocation.service.interfaces
         /// Met à jour un membre dans la base de données.
         /// </summary>
         /// <param name="membreDTO">Le membre à mettre à jour</param>
-        int UpdateMembre(MembreDTO membreDTO);
+        int UpdateMembre(MembreDTO membreDTO,int id);
 
         /// <summary>
         /// Supprime un membre dans la base de données.

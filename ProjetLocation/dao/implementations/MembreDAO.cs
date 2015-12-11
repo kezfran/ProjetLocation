@@ -16,6 +16,7 @@ namespace ProjetLocation.dao
     {
         public Connexion connexion { get; set; }
         public MySqlCommand command { get; set; }
+
         private static string ADD_REQUEST = @"INSERT into membre (nom,telephone,adresse,email,nbLocation) " +
             "VALUES(@nom, @telephone, @adresse,@email,@nbLocation)";
 
@@ -95,7 +96,7 @@ namespace ProjetLocation.dao
         }
 
         /// <inheritdoc />
-        public int Update(MembreDTO membreDTO)
+        public int Update(MembreDTO membreDTO,int id)
         {
             int n = 0;
             try
@@ -108,7 +109,7 @@ namespace ProjetLocation.dao
                 command.Parameters.Add(new MySqlParameter("@adresse", membreDTO.adresse));
                 command.Parameters.Add(new MySqlParameter("@email", membreDTO.email));
                 command.Parameters.Add(new MySqlParameter("@nbLocation", membreDTO.nbLocation));
-                command.Parameters.Add(new MySqlParameter("@idMembre", membreDTO.idMembre));
+                command.Parameters.Add(new MySqlParameter("@idMembre", id));
                 n = command.ExecuteNonQuery();
             }
             catch (MySqlException mySqlException)
