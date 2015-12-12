@@ -9,6 +9,7 @@ C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLo
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.pdb
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\bin\Debug\LoginControl.dll
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\bin\Debug\MySql.Data.dll
+C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.csprojResolveAssemblyReference.cache
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.Form1.resources
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.Login.resources
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.Properties.Resources.resources
