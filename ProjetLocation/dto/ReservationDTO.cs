@@ -11,6 +11,7 @@ namespace ProjetLocation.dto
         public int IdReservation { get; set; }
         public int IdMembre { get; set; }
         public int IdVoiture { get; set; }
+        public int IdEmploye { get; set; }
         public string DateReservation { get; set; }
     }
 }

@@ -16,20 +16,20 @@ namespace ProjetLocation.dao
     {
         public Connexion connexion { get; set; }
         public MySqlCommand command { get; set; }
-        private static string ADD_REQUEST = @"INSERT into reservation (idMembre,idVoiture,dateReservation) " +
-            "VALUES(@idMembre, @idVoiture, @dateReservation)";
+        private static string ADD_REQUEST = @"INSERT into reservation (idMembre,idVoiture,idEmploye,dateReservation) " +
+            "VALUES(@idMembre, @idVoiture, @idEmploye, @dateReservation)";
 
         private static string READ_REQUEST = @"SELECT * FROM reservation WHERE idReservation = @idReservation";
 
-        private static string UPDATE_REQUEST = @"UPDATE reservation set idMembre = @idMembre, idVoiture = @idVoiture, dateReservation = @dateReservation " +
-            "WHERE idReservation = @idReservation";
+        private static string UPDATE_REQUEST = @"UPDATE reservation set idMembre = @idMembre, idVoiture = @idVoiture, idEmploye = @idEmploye, " + 
+            "dateReservation = @dateReservation WHERE idReservation = @idReservation";
 
         private static string DELETE_REQUEST = @"DELETE from reservation WHERE idReservation = @idReservation";
 
-        private static string GET_ALL_REQUEST = @"SELECT idReservation,idMembre,idVoiture,dateReservation "
+        private static string GET_ALL_REQUEST = @"SELECT idReservation,idMembre,idVoiture,idEmploye,dateReservation "
             + "FROM reservation";
 
-        private static String FIND_BY_MEMBRE = @"SELECT idReservation,idMembre,idVoiture,dateReservation FROM reservation " +
+        private static String FIND_BY_MEMBRE = @"SELECT idReservation,idMembre,idVoiture,idEmploye,dateReservation FROM reservation " +
             "WHERE idMembre = @idMembre";
 
         private static String FIND_BY_VOITURE = @"SELECT idReservation,idMembre,idVoiture,dateReservation FROM reservation " +
@@ -51,6 +51,7 @@ namespace ProjetLocation.dao
 
                 command.Parameters.Add(new MySqlParameter("@idMembre", reservationDTO.IdMembre));
                 command.Parameters.Add(new MySqlParameter("@idVoiture", reservationDTO.IdVoiture));
+                command.Parameters.Add(new MySqlParameter("@idEmploye", reservationDTO.IdEmploye));
                 command.Parameters.Add(new MySqlParameter("@dateReservation", reservationDTO.DateReservation));
                 n = command.ExecuteNonQuery();
             }
@@ -80,7 +81,8 @@ namespace ProjetLocation.dao
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);
-                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                    reservationDTO.IdEmploye = dr.GetInt32(3);
+                    reservationDTO.DateReservation = dr.GetDateTime(4).ToString();
                 }
             }
             catch (MySqlException mySqlException)
@@ -104,6 +106,7 @@ namespace ProjetLocation.dao
 
                 command.Parameters.Add(new MySqlParameter("@idMembre", reservationDTO.IdMembre));
                 command.Parameters.Add(new MySqlParameter("@idVoiture", reservationDTO.IdVoiture));
+                command.Parameters.Add(new MySqlParameter("@idEmploye",reservationDTO.IdEmploye));
                 command.Parameters.Add(new MySqlParameter("@dateReservation", reservationDTO.DateReservation));
                 command.Parameters.Add(new MySqlParameter("@idReservation", id));
                 n = command.ExecuteNonQuery();
@@ -157,7 +160,8 @@ namespace ProjetLocation.dao
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);
-                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                    reservationDTO.IdEmploye = dr.GetInt32(3);
+                    reservationDTO.DateReservation = dr.GetDateTime(4).ToString();
                     reservations.Add(reservationDTO);
                 }
             }
@@ -189,7 +193,8 @@ namespace ProjetLocation.dao
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);
-                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                    reservationDTO.IdEmploye = dr.GetInt32(3);
+                    reservationDTO.DateReservation = dr.GetDateTime(4).ToString();
                     reservations.Add(reservationDTO);
                 }
             }
@@ -221,7 +226,8 @@ namespace ProjetLocation.dao
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);
-                    reservationDTO.DateReservation = dr.GetDateTime(3).ToString();
+                    reservationDTO.IdEmploye = dr.GetInt32(3);
+                    reservationDTO.DateReservation = dr.GetDateTime(4).ToString();
                     reservations.Add(reservationDTO);
                 }
             }
