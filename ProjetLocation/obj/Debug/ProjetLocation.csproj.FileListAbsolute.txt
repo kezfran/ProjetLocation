@@ -15,4 +15,3 @@ C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLo
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.csproj.GenerateResource.Cache
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.exe
 C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.pdb
-C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.csprojResolveAssemblyReference.cache
