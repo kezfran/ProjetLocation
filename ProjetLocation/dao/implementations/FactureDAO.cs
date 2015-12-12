@@ -18,20 +18,24 @@ namespace ProjetLocation.dao
         public Connexion connexion { get; set; }
         public MySqlCommand command { get; set; }
 
-        private static string ADD_REQUEST = @"INSERT into facture (idLocation,dateFacture) " +
-            "VALUES(@idLocation, @dateFacture)";
+        private static string ADD_REQUEST = @"INSERT into facture (idLocation,idEmploye,dateFacture) " +
+            "VALUES(@idLocation, @idEmploye, @dateFacture)";
 
         private static string READ_REQUEST = "SELECT * FROM facture WHERE idFacture = @idFacture";
 
-        private static string UPDATE_REQUEST = @"UPDATE facture set idLocation = @idLocation, dateFacture = @dateFacture WHERE idFacture = @idFacture";
+        private static string UPDATE_REQUEST = @"UPDATE facture set idLocation = @idLocation, idEmploye = @idEmploye, " + 
+            "dateFacture = @dateFacture WHERE idFacture = @idFacture";
 
         private static string DELETE_REQUEST = @"DELETE from facture WHERE idFacture = @idFacture";
 
-        private static string GET_ALL_REQUEST = @"SELECT idFacture, idLocation ,dateFacture "
+        private static string GET_ALL_REQUEST = @"SELECT idFacture, idLocation ,idEmploye,dateFacture "
             + "FROM facture";
 
-        private static String FIND_BY_LOCATION = @"SELECT idFacture,idLocation,dateFacture FROM facture " +
+        private static String FIND_BY_LOCATION = @"SELECT idFacture, idLocation, idEmploye, dateFacture FROM facture " +
             "WHERE idLocation = @idLocation";
+
+        private static String FIND_BY_EMPLOYE = @"SELECT idFacture, idLocation, idEmploye, dateFacture FROM facture " +
+            "WHERE idEmploye = @idEmploye";
 
         public FactureDAO()
         {
@@ -49,6 +53,7 @@ namespace ProjetLocation.dao
                 command.CommandText = ADD_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter("@idLocation", factureDTO.IdLocation));
+                command.Parameters.Add(new MySqlParameter("@idEmploye", factureDTO.IdEmploye));
                 command.Parameters.Add(new MySqlParameter("@dateFacture", factureDTO.DateFacture));
                 n = command.ExecuteNonQuery();
             }
@@ -79,7 +84,8 @@ namespace ProjetLocation.dao
                 {
                     factureDTO.IdFacture = dr.GetInt32(0);
                     factureDTO.IdLocation = dr.GetInt32(1);
-                    factureDTO.DateFacture = dr.GetDateTime(2).ToString();
+                    factureDTO.IdEmploye = dr.GetInt32(2);
+                    factureDTO.DateFacture = dr.GetDateTime(3).ToString();
                 }
             }
             catch (MySqlException mySqlException)
@@ -103,6 +109,7 @@ namespace ProjetLocation.dao
                 command.CommandText = UPDATE_REQUEST;
 
                 command.Parameters.Add(new MySqlParameter("@idLocation", factureDTO.IdLocation));
+                command.Parameters.Add(new MySqlParameter("@idEmploye", factureDTO.IdEmploye));
                 command.Parameters.Add(new MySqlParameter("@dateFacture", factureDTO.DateFacture));
                 command.Parameters.Add(new MySqlParameter("@idFacture", id));
                 n = command.ExecuteNonQuery();
@@ -157,7 +164,8 @@ namespace ProjetLocation.dao
                 {
                     factureDTO.IdFacture = dr.GetInt32(0);
                     factureDTO.IdLocation = dr.GetInt32(1);
-                    factureDTO.DateFacture = dr.GetDateTime(2).ToString();
+                    factureDTO.IdEmploye = dr.GetInt32(2);
+                    factureDTO.DateFacture = dr.GetDateTime(3).ToString();
                     factures.Add(factureDTO);
                 }
             }
@@ -190,7 +198,41 @@ namespace ProjetLocation.dao
                 {
                     factureDTO.IdFacture = dr.GetInt32(0);
                     factureDTO.IdLocation = dr.GetInt32(1);
-                    factureDTO.DateFacture = dr.GetDateTime(2).ToString();
+                    factureDTO.IdEmploye = dr.GetInt32(2);
+                    factureDTO.DateFacture = dr.GetDateTime(3).ToString();
+                    factures.Add(factureDTO);
+                }
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+            return factures;
+        }
+
+        public List<FactureDTO> FindByEmploye(int id)
+        {
+            List<FactureDTO> factures = new List<FactureDTO>();
+            FactureDTO factureDTO = new FactureDTO();
+            try
+            {
+                connexion.Open();
+                command.CommandText = FIND_BY_EMPLOYE;
+
+                command.Parameters.Add(new MySqlParameter("@idEmploye", id));
+
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    factureDTO.IdFacture = dr.GetInt32(0);
+                    factureDTO.IdLocation = dr.GetInt32(1);
+                    factureDTO.IdEmploye = dr.GetInt32(2);
+                    factureDTO.DateFacture = dr.GetDateTime(3).ToString();
                     factures.Add(factureDTO);
                 }
             }

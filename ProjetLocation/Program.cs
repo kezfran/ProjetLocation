@@ -20,7 +20,15 @@ namespace ProjetLocation
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Form1());
+
+            FactureService fact = new FactureService();
+            FactureDTO f = new FactureDTO();
+
+            List<FactureDTO> list = fact.FindByEmploye(1);
+
+            Console.WriteLine(list.Count);
+            Console.Read();
         }
 
        

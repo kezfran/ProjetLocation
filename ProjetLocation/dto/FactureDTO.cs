@@ -10,6 +10,7 @@ namespace ProjetLocation.dto
     {
         public int IdFacture { get; set; }
         public int IdLocation { get; set; }
+        public int IdEmploye { get; set; }
         public String DateFacture { get; set; }
     }
 }

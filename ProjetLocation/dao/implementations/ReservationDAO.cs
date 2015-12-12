@@ -32,8 +32,11 @@ namespace ProjetLocation.dao
         private static String FIND_BY_MEMBRE = @"SELECT idReservation,idMembre,idVoiture,idEmploye,dateReservation FROM reservation " +
             "WHERE idMembre = @idMembre";
 
-        private static String FIND_BY_VOITURE = @"SELECT idReservation,idMembre,idVoiture,dateReservation FROM reservation " +
+        private static String FIND_BY_VOITURE = @"SELECT idReservation,idMembre,idVoiture,idEmploye,dateReservation FROM reservation " +
             "WHERE idVoiture = @idVoiture";
+
+        private static String FIND_BY_EMPLOYE = @"SELECT idReservation,idMembre,idVoiture,idEmploye,dateReservation FROM reservation " +
+            "WHERE idEmploye = @idEmploye";
 
         public ReservationDAO()
         {
@@ -218,6 +221,39 @@ namespace ProjetLocation.dao
                 connexion.Open();
                 command.CommandText = FIND_BY_VOITURE;
                 command.Parameters.Add(new MySqlParameter("@idVoiture", id));
+
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    reservationDTO.IdReservation = dr.GetInt32(0);
+                    reservationDTO.IdMembre = dr.GetInt32(1);
+                    reservationDTO.IdVoiture = dr.GetInt32(2);
+                    reservationDTO.IdEmploye = dr.GetInt32(3);
+                    reservationDTO.DateReservation = dr.GetDateTime(4).ToString();
+                    reservations.Add(reservationDTO);
+                }
+            }
+            catch (MySqlException mySqlException)
+            {
+                throw new DAOException(mySqlException.Message);
+            }
+            finally
+            {
+                connexion.Close();
+            }
+            return reservations;
+        }
+
+        public List<ReservationDTO> FindByEmploye(int id)
+        {
+            List<ReservationDTO> reservations = new List<ReservationDTO>();
+            ReservationDTO reservationDTO = new ReservationDTO();
+            try
+            {
+                connexion.Open();
+                command.CommandText = FIND_BY_EMPLOYE;
+                command.Parameters.Add(new MySqlParameter("@idEmploye", id));
 
                 MySqlDataReader dr = command.ExecuteReader();
 

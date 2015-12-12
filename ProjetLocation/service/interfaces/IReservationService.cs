@@ -50,5 +50,8 @@ namespace ProjetLocation.service.interfaces
         /// <param name="id">L'id du membre à utiliser</param>
         /// <returns name="reservations">La liste des locations à retourner</returns>
         List<ReservationDTO> FindByVoiture(int idVoiture);
+
+        List<ReservationDTO> FindByEmploye(int id);
+
     }
 }

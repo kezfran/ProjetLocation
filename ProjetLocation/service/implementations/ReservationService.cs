@@ -108,5 +108,17 @@ namespace ProjetLocation.service.implementations
                 throw new ServiceException(daoException.Message);
             }
         }
+
+        public List<ReservationDTO> FindByEmploye(int id)
+        {
+            try
+            {
+                return reservationDAO.FindByEmploye(id);
+            }
+            catch (DAOException daoException)
+            {
+                throw new ServiceException(daoException.Message);
+            }
+        }
     }
 }

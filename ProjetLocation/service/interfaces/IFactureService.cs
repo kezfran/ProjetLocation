@@ -47,5 +47,6 @@ namespace ProjetLocation.service.interfaces
         /// <param name="id">L'id de la facture à utiliser</param>
         /// <returns name="factures">La liste des factures à retourner</returns>
         List<FactureDTO> FindByLocation(int id);
+        List<FactureDTO> FindByEmploye(int id);
     }
 }

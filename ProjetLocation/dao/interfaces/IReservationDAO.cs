@@ -49,5 +49,6 @@ namespace ProjetLocation.dao.interfaces
         List<ReservationDTO> FindByMembre(int id);
 
         List<ReservationDTO> FindByVoiture(int id);
+        List<ReservationDTO> FindByEmploye(int id);
     }
 }
