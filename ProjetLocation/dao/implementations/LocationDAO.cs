@@ -158,7 +158,6 @@ namespace ProjetLocation.dao
         {
             List<LocationDTO> locations = new List<LocationDTO>();
 
-            LocationDTO locationDTO = new LocationDTO();
             try
             {
                 connexion.Open();
@@ -167,12 +166,9 @@ namespace ProjetLocation.dao
                 MySqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
+                    LocationDTO locationDTO = new LocationDTO();
                     locationDTO.IdLocation = dr.GetInt32(0);
-
-                    MembreDTO membre = new MembreDTO();
                     locationDTO.IdMembre = dr.GetInt32(1);
-
-                    VoitureDTO voiture = new VoitureDTO();
                     locationDTO.IdVoiture = dr.GetInt32(2);
                     locationDTO.DateLocation = dr.GetDateTime(3).ToString();
                     locationDTO.DateRetour = dr.GetDateTime(4).ToString();
@@ -195,7 +191,6 @@ namespace ProjetLocation.dao
         {
             List<LocationDTO> locations = new List<LocationDTO>();
 
-            LocationDTO locationDTO = new LocationDTO();
             try
             {
                 connexion.Open();
@@ -206,6 +201,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    LocationDTO locationDTO = new LocationDTO();
                     locationDTO.IdLocation = dr.GetInt32(0);
                     locationDTO.IdMembre = dr.GetInt32(1);
                     locationDTO.IdVoiture = dr.GetInt32(2);
@@ -230,9 +226,9 @@ namespace ProjetLocation.dao
         public List<LocationDTO> FindByVoiture(int idVoiture)
         {
             List<LocationDTO> locations = new List<LocationDTO>();
-            LocationDTO locationDTO = new LocationDTO();
             try
             {
+                LocationDTO locationDTO = new LocationDTO();
                 connexion.Open();
                 command.CommandText = FIND_BY_VOITURE;
                 command.Parameters.Add(new MySqlParameter("@idVoiture", idVoiture));

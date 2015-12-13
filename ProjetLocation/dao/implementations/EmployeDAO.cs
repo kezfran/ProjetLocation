@@ -141,9 +141,9 @@ namespace ProjetLocation.dao.implementations
         public List<EmployeDTO> GetAll()
         {
             List<EmployeDTO> employes = new List<EmployeDTO>();
-            EmployeDTO employeDTO = new EmployeDTO();
             try
             {
+                EmployeDTO employeDTO = new EmployeDTO();
                 connexion.Open();
                 command.CommandText = GET_ALL_REQUEST;
 

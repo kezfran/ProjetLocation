@@ -143,7 +143,6 @@ namespace ProjetLocation.dao
         public List<VoitureDTO> GetAll()
         {
             List<VoitureDTO> voitures = new List<VoitureDTO>();
-            VoitureDTO voitureDTO = new VoitureDTO();
             try
             {
                 connexion.Open();
@@ -152,6 +151,7 @@ namespace ProjetLocation.dao
                 MySqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
+                    VoitureDTO voitureDTO = new VoitureDTO();
                     voitureDTO.idVoiture = dr.GetInt32(0);
                     voitureDTO.marque = dr.GetString(1);
                     voitureDTO.modele = dr.GetString(2);

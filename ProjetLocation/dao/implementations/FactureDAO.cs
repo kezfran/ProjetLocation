@@ -152,7 +152,6 @@ namespace ProjetLocation.dao
         public List<FactureDTO> GetAll()
         {
             List<FactureDTO> factures = new List<FactureDTO>();
-            FactureDTO factureDTO = new FactureDTO();
             try
             {
                 connexion.Open();
@@ -162,6 +161,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    FactureDTO factureDTO = new FactureDTO();
                     factureDTO.IdFacture = dr.GetInt32(0);
                     factureDTO.IdLocation = dr.GetInt32(1);
                     factureDTO.IdEmploye = dr.GetInt32(2);
@@ -184,7 +184,6 @@ namespace ProjetLocation.dao
         public List<FactureDTO> FindByLocation(int id)
         {
             List<FactureDTO> factures = new List<FactureDTO>();
-            FactureDTO factureDTO = new FactureDTO();
             try
             {
                 connexion.Open();
@@ -196,6 +195,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    FactureDTO factureDTO = new FactureDTO();
                     factureDTO.IdFacture = dr.GetInt32(0);
                     factureDTO.IdLocation = dr.GetInt32(1);
                     factureDTO.IdEmploye = dr.GetInt32(2);
@@ -217,7 +217,6 @@ namespace ProjetLocation.dao
         public List<FactureDTO> FindByEmploye(int id)
         {
             List<FactureDTO> factures = new List<FactureDTO>();
-            FactureDTO factureDTO = new FactureDTO();
             try
             {
                 connexion.Open();
@@ -229,6 +228,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    FactureDTO factureDTO = new FactureDTO();
                     factureDTO.IdFacture = dr.GetInt32(0);
                     factureDTO.IdLocation = dr.GetInt32(1);
                     factureDTO.IdEmploye = dr.GetInt32(2);

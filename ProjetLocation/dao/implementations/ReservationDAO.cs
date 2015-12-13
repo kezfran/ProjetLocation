@@ -150,7 +150,6 @@ namespace ProjetLocation.dao
         public List<ReservationDTO> GetAll()
         {
             List<ReservationDTO> reservations = new List<ReservationDTO>();
-            ReservationDTO reservationDTO = new ReservationDTO();
             try
             {
                 connexion.Open();
@@ -160,6 +159,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    ReservationDTO reservationDTO = new ReservationDTO();
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);
@@ -182,7 +182,6 @@ namespace ProjetLocation.dao
         public List<ReservationDTO> FindByMembre(int id)
         {
             List<ReservationDTO> reservations = new List<ReservationDTO>();
-            ReservationDTO reservationDTO = new ReservationDTO();
             try
             {
                 connexion.Open();
@@ -193,6 +192,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    ReservationDTO reservationDTO = new ReservationDTO();
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);
@@ -215,7 +215,6 @@ namespace ProjetLocation.dao
         public List<ReservationDTO> FindByVoiture(int id)
         {
             List<ReservationDTO> reservations = new List<ReservationDTO>();
-            ReservationDTO reservationDTO = new ReservationDTO();
             try
             {
                 connexion.Open();
@@ -226,6 +225,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    ReservationDTO reservationDTO = new ReservationDTO();
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);
@@ -248,7 +248,6 @@ namespace ProjetLocation.dao
         public List<ReservationDTO> FindByEmploye(int id)
         {
             List<ReservationDTO> reservations = new List<ReservationDTO>();
-            ReservationDTO reservationDTO = new ReservationDTO();
             try
             {
                 connexion.Open();
@@ -259,6 +258,7 @@ namespace ProjetLocation.dao
 
                 while (dr.Read())
                 {
+                    ReservationDTO reservationDTO = new ReservationDTO();
                     reservationDTO.IdReservation = dr.GetInt32(0);
                     reservationDTO.IdMembre = dr.GetInt32(1);
                     reservationDTO.IdVoiture = dr.GetInt32(2);

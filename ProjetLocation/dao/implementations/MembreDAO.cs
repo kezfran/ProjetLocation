@@ -151,7 +151,6 @@ namespace ProjetLocation.dao
         {
             List<MembreDTO> membres = new List<MembreDTO>();
 
-            MembreDTO membreDTO = new MembreDTO();
             try
             {
                 connexion.Open();
@@ -160,6 +159,7 @@ namespace ProjetLocation.dao
                 MySqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
+                    MembreDTO membreDTO = new MembreDTO();
                     membreDTO.idMembre = dr.GetInt32(0);
                     membreDTO.nom = dr.GetString(1);
                     membreDTO.telephone = dr.GetString(2);

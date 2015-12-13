@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjetLocation.dto;
+using ProjetLocation.service.implementations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,19 @@ namespace ProjetLocation
 {
     public partial class Form1 : Form
     {
+        Login login = new Login();
+        VoitureService voiture = new VoitureService();
+        VoitureDTO voitureDTO = new VoitureDTO();
         public Form1()
         {
             InitializeComponent();
+        }
+
+        //Déconnexion et fermeture de la form1
+        private void logoutUp_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            login.Show();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -22,19 +34,47 @@ namespace ProjetLocation
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
+        private void btnAjoutVoiture_Click(object sender, EventArgs e)
+        {
+            string marque = txtMarqueVoiture.Text;
+            string modele = txtModeleVoiture.Text;
+            string annee = datePickVoiture.Value.ToString();
+
+            if (txtMarqueVoiture.Text == string.Empty || txtModeleVoiture.Text == string.Empty)
+            {
+                MessageBox.Show("Aucun champ peut être vide!");
+            }
+            else
+            {
+                voitureDTO.marque = marque;
+                voitureDTO.modele = modele;
+                voitureDTO.annee = annee;
+                voiture.AddVoiture(voitureDTO);
+                MessageBox.Show("La voiture " + voitureDTO.marque + " modèle " + voitureDTO.modele + " construit en "
+                    + voitureDTO.annee + " a été ajoutée.");
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnModifVoiture_Click(object sender, EventArgs e)
         {
+            string marque = txtMarqueVoiture.Text;
+            string modele = txtModeleVoiture.Text;
+            string annee = datePickVoiture.Value.ToString();
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            if (txtMarqueVoiture.Text == string.Empty || txtModeleVoiture.Text == string.Empty)
+            {
+                MessageBox.Show("Aucun champ peut être vide!");
+            }
+            else
+            {
+                voitureDTO.marque = marque;
+                voitureDTO.modele = modele;
+                voitureDTO.annee = annee;
+                voiture.AddVoiture(voitureDTO);
+                MessageBox.Show("La voiture " + voitureDTO.marque + " modèle " + voitureDTO.modele + " construit en "
+                    + voitureDTO.annee + " a été modifiée.");
+            }
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -76,5 +116,16 @@ namespace ProjetLocation
         {
 
         }
+
+        private void btnAfficherVoiture_Click(object sender, EventArgs e)
+        {
+            List<VoitureDTO> voitures = voiture.GetAllVoitures();
+            foreach (var v in voitures)
+            {
+                dGridViewVoiture.Rows.Add(v.idVoiture, v.marque, v.modele, v.annee);
+            }
+        }
+
+
     }
 }

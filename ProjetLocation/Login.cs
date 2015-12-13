@@ -16,38 +16,36 @@ namespace ProjetLocation
 {
     public partial class Login : Form
     {
-        //Connexion connexion { get; set; }
-        //MySqlCommand command { get; set; }
-        Form1 form1 = new Form1();
+
+        public static int UserId;
         public Login()
         {
             InitializeComponent();
-            //connexion = new Connexion();
-            //command = connexion.Connection.CreateCommand();
             IDRequis.Hide();
             passRequis.Hide();
         }
 
-        private void VerificationLogin()
+        private void VerifierLogin()
         {
             EmployeService employe = new EmployeService();
             EmployeDTO emp = new EmployeDTO();
 
-            int id = Int32.Parse(txtID.Text);
+            UserId = Int32.Parse(txtID.Text);
             string motPasse = txtPassword.Text;
 
             try
             {
-                //connexion.Open();
-                emp = employe.ReadEmploye(id);
+                emp = employe.ReadEmploye(UserId);
 
-                if (txtID.Equals(null))
+                if (txtID.Text == string.Empty)
                 {
                     IDRequis.Show();
-                }else if(motPasse.Equals(null)){
+                }
+                else if (txtPassword.Text == string.Empty)
+                {
                     passRequis.Show();
                 }
-                else if (emp.IdEmploye != id || emp.MotPasse != motPasse)
+                else if (emp.IdEmploye != UserId || emp.MotPasse != motPasse)
                 {
                     IDRequis.Hide();
                     passRequis.Hide();
@@ -56,6 +54,7 @@ namespace ProjetLocation
                 else
                 {
                     this.Hide();
+                    Form1 form1 = new Form1();
                     form1.Show();
                 }
 
@@ -64,10 +63,6 @@ namespace ProjetLocation
             {
                 throw new Exception(mySqlException.Message);
             }
-            //finally 
-            //{ 
-            //    //connexion.Close();
-            //}
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -77,7 +72,7 @@ namespace ProjetLocation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerificationLogin();
+            VerifierLogin();
         }
     }
 }
