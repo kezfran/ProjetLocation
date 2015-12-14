@@ -34,7 +34,10 @@ namespace ProjetLocation
 
         }
 
-
+        #region Gestion de la voiture
+        /// <summary>
+        ///     Bouton d'ajout de la voiture.
+        /// </summary>
         private void btnAjoutVoiture_Click(object sender, EventArgs e)
         {
             string marque = txtMarqueVoiture.Text;
@@ -56,8 +59,16 @@ namespace ProjetLocation
             }
         }
 
+        /// <summary>
+        ///     Bouton de modification de la voiture.
+        /// </summary>
         private void btnModifVoiture_Click(object sender, EventArgs e)
         {
+            int id = Int32.Parse(txtIDVoiture.Text.ToString());
+
+            //VoitureDTO voitureTemp = new VoitureDTO();
+            //voitureTemp = voiture.ReadVoiture(id);
+
             string marque = txtMarqueVoiture.Text;
             string modele = txtModeleVoiture.Text;
             string annee = datePickVoiture.Value.ToString();
@@ -71,11 +82,43 @@ namespace ProjetLocation
                 voitureDTO.marque = marque;
                 voitureDTO.modele = modele;
                 voitureDTO.annee = annee;
-                voiture.AddVoiture(voitureDTO);
-                MessageBox.Show("La voiture " + voitureDTO.marque + " modèle " + voitureDTO.modele + " construit en "
-                    + voitureDTO.annee + " a été modifiée.");
+                voiture.UpdateVoiture(voitureDTO, id);
+                MessageBox.Show("Cette voiture " + /*voitureTemp.marque +*/ " modèle " /*+ voitureTemp.modele*/ + " a été modifiée.");
             }
         }
+
+        /// <summary>
+        ///     Bouton de suppression de la voiture.
+        /// </summary>
+        private void btnSupprimeVoiture_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(txtIDVoiture.Text.ToString());
+
+            //if (id == null)
+            //{
+            //    MessageBox.Show("Veuillez séléctionner une voiture à supprimer!!!");
+            //}
+            //else
+            //{
+            //voitureDTO = voiture.ReadVoiture(id);
+            voiture.DeleteVoiture(id);
+            MessageBox.Show("Cette voiture " + /* voitureDTO.marque + " modèle " + voitureDTO.modele +*/ " a été supprimée!");
+            //}
+        }
+
+        /// <summary>
+        ///     Bouton d'affichage de toutes les voitures.
+        /// </summary>
+        private void btnAfficherVoiture_Click(object sender, EventArgs e)
+        {
+            //dGridViewVoiture
+            List<VoitureDTO> voitures = voiture.GetAllVoitures();
+            foreach (var v in voitures)
+            {
+                dGridViewVoiture.Rows.Add(v.idVoiture, v.marque, v.modele, v.annee);
+            }
+        }
+        #endregion fin de la Gestion de la voiture
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
@@ -112,17 +155,14 @@ namespace ProjetLocation
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void dGridViewVoiture_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void btnAfficherVoiture_Click(object sender, EventArgs e)
-        {
-            List<VoitureDTO> voitures = voiture.GetAllVoitures();
-            foreach (var v in voitures)
+            if (dGridViewVoiture.SelectedCells.Count > 0)
             {
-                dGridViewVoiture.Rows.Add(v.idVoiture, v.marque, v.modele, v.annee);
+                int i = dGridViewVoiture.SelectedCells[0].RowIndex;
+                int IDVoiture = Int32.Parse(dGridViewVoiture.Rows[i].Cells[0].Value.ToString());
+
+                txtIDVoiture.Text = IDVoiture.ToString();
             }
         }
 

@@ -33,6 +33,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblTitreVoiture = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAfficherVoiture = new System.Windows.Forms.Button();
             this.datePickVoiture = new System.Windows.Forms.DateTimePicker();
             this.btnSupprimeVoiture = new System.Windows.Forms.Button();
             this.btnModifVoiture = new System.Windows.Forms.Button();
@@ -46,6 +47,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dGridViewVoiture = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modèle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Année = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
@@ -110,11 +115,6 @@
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.logoutUp = new System.Windows.Forms.Button();
             this.iVoitureServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAfficherVoiture = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modèle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Année = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -196,6 +196,16 @@
             this.panel2.Size = new System.Drawing.Size(791, 172);
             this.panel2.TabIndex = 1;
             // 
+            // btnAfficherVoiture
+            // 
+            this.btnAfficherVoiture.Location = new System.Drawing.Point(241, 95);
+            this.btnAfficherVoiture.Name = "btnAfficherVoiture";
+            this.btnAfficherVoiture.Size = new System.Drawing.Size(75, 23);
+            this.btnAfficherVoiture.TabIndex = 23;
+            this.btnAfficherVoiture.Text = "Afficher";
+            this.btnAfficherVoiture.UseVisualStyleBackColor = true;
+            this.btnAfficherVoiture.Click += new System.EventHandler(this.btnAfficherVoiture_Click);
+            // 
             // datePickVoiture
             // 
             this.datePickVoiture.Location = new System.Drawing.Point(68, 88);
@@ -212,7 +222,7 @@
             this.btnSupprimeVoiture.TabIndex = 21;
             this.btnSupprimeVoiture.Text = "Supprimer";
             this.btnSupprimeVoiture.UseVisualStyleBackColor = true;
-            this.btnSupprimeVoiture.Click += new System.EventHandler(this.button3_Click);
+            this.btnSupprimeVoiture.Click += new System.EventHandler(this.btnSupprimeVoiture_Click);
             // 
             // btnModifVoiture
             // 
@@ -252,6 +262,7 @@
             // 
             // txtIDVoiture
             // 
+            this.txtIDVoiture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtIDVoiture.Location = new System.Drawing.Point(68, 17);
             this.txtIDVoiture.Name = "txtIDVoiture";
             this.txtIDVoiture.ReadOnly = true;
@@ -320,6 +331,27 @@
             this.dGridViewVoiture.Name = "dGridViewVoiture";
             this.dGridViewVoiture.Size = new System.Drawing.Size(763, 177);
             this.dGridViewVoiture.TabIndex = 1;
+            this.dGridViewVoiture.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridViewVoiture_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // Marque
+            // 
+            this.Marque.HeaderText = "Marque";
+            this.Marque.Name = "Marque";
+            // 
+            // Modèle
+            // 
+            this.Modèle.HeaderText = "Modèle";
+            this.Modèle.Name = "Modèle";
+            // 
+            // Année
+            // 
+            this.Année.HeaderText = "Année";
+            this.Année.Name = "Année";
             // 
             // tabPage2
             // 
@@ -905,36 +937,6 @@
             this.logoutUp.TabIndex = 5;
             this.logoutUp.Text = "Logout";
             this.logoutUp.UseVisualStyleBackColor = true;
-            // 
-            // btnAfficherVoiture
-            // 
-            this.btnAfficherVoiture.Location = new System.Drawing.Point(241, 95);
-            this.btnAfficherVoiture.Name = "btnAfficherVoiture";
-            this.btnAfficherVoiture.Size = new System.Drawing.Size(75, 23);
-            this.btnAfficherVoiture.TabIndex = 23;
-            this.btnAfficherVoiture.Text = "Afficher";
-            this.btnAfficherVoiture.UseVisualStyleBackColor = true;
-            this.btnAfficherVoiture.Click += new System.EventHandler(this.btnAfficherVoiture_Click);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Marque
-            // 
-            this.Marque.HeaderText = "Marque";
-            this.Marque.Name = "Marque";
-            // 
-            // Modèle
-            // 
-            this.Modèle.HeaderText = "Modèle";
-            this.Modèle.Name = "Modèle";
-            // 
-            // Année
-            // 
-            this.Année.HeaderText = "Année";
-            this.Année.Name = "Année";
             // 
             // Form1
             // 
