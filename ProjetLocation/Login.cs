@@ -65,9 +65,10 @@ namespace ProjetLocation
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)

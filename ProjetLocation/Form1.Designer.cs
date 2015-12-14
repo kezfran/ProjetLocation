@@ -47,42 +47,61 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dGridViewVoiture = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDVoiture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marque = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modèle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Année = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.btnAfficherMembre = new System.Windows.Forms.Button();
+            this.txtNbLocMembre = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSupprimMembre = new System.Windows.Forms.Button();
+            this.btnModifMembre = new System.Windows.Forms.Button();
+            this.btnAjoutMembre = new System.Windows.Forms.Button();
+            this.txtMailMembre = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtAdressMembre = new System.Windows.Forms.TextBox();
+            this.txtPhoneMembre = new System.Windows.Forms.TextBox();
+            this.txtNomMembre = new System.Windows.Forms.TextBox();
+            this.txtIDMembre = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dGridViewMembre = new System.Windows.Forms.DataGridView();
+            this.IDMembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomMembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelephoneMembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AdresseMembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmailMembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NbLocationsMembre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.datePickReservation = new System.Windows.Forms.DateTimePicker();
+            this.AfficherReservation = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnSupprimReservation = new System.Windows.Forms.Button();
+            this.btnModifReservation = new System.Windows.Forms.Button();
+            this.btnAjoutReservation = new System.Windows.Forms.Button();
+            this.txtIDEmployeReservation = new System.Windows.Forms.TextBox();
+            this.txtIDVoitureReservation = new System.Windows.Forms.TextBox();
+            this.txtIDMembreReservation = new System.Windows.Forms.TextBox();
+            this.txtIDReservation = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dGridViewReservation = new System.Windows.Forms.DataGridView();
+            this.IDReservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDMembreReservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDVoitureReservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDEmployeReservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateReservation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
@@ -97,7 +116,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dGridViewLocation = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnSupprimeFacture = new System.Windows.Forms.Button();
@@ -113,8 +132,15 @@
             this.lblIDFact = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.logoutUp = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.iVoitureServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label19 = new System.Windows.Forms.Label();
+            this.IDLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDMembreLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDVoitureLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateRetour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAfficherLocations = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -123,15 +149,15 @@
             this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridViewMembre)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridViewReservation)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridViewLocation)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -208,9 +234,12 @@
             // 
             // datePickVoiture
             // 
+            this.datePickVoiture.CustomFormat = "yyyy";
+            this.datePickVoiture.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datePickVoiture.Location = new System.Drawing.Point(68, 88);
             this.datePickVoiture.Name = "datePickVoiture";
-            this.datePickVoiture.Size = new System.Drawing.Size(141, 20);
+            this.datePickVoiture.ShowUpDown = true;
+            this.datePickVoiture.Size = new System.Drawing.Size(52, 20);
             this.datePickVoiture.TabIndex = 22;
             this.datePickVoiture.Value = new System.DateTime(2015, 12, 12, 13, 42, 10, 0);
             // 
@@ -250,7 +279,6 @@
             this.txtModeleVoiture.Name = "txtModeleVoiture";
             this.txtModeleVoiture.Size = new System.Drawing.Size(100, 20);
             this.txtModeleVoiture.TabIndex = 17;
-            this.txtModeleVoiture.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // txtMarqueVoiture
             // 
@@ -258,11 +286,10 @@
             this.txtMarqueVoiture.Name = "txtMarqueVoiture";
             this.txtMarqueVoiture.Size = new System.Drawing.Size(100, 20);
             this.txtMarqueVoiture.TabIndex = 16;
-            this.txtMarqueVoiture.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtIDVoiture
             // 
-            this.txtIDVoiture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.txtIDVoiture.BackColor = System.Drawing.Color.SlateGray;
             this.txtIDVoiture.Location = new System.Drawing.Point(68, 17);
             this.txtIDVoiture.Name = "txtIDVoiture";
             this.txtIDVoiture.ReadOnly = true;
@@ -277,7 +304,6 @@
             this.lblAnneeVoiture.Size = new System.Drawing.Size(44, 13);
             this.lblAnneeVoiture.TabIndex = 14;
             this.lblAnneeVoiture.Text = "Année :";
-            this.lblAnneeVoiture.Click += new System.EventHandler(this.label4_Click);
             // 
             // lblModelVoiture
             // 
@@ -287,7 +313,6 @@
             this.lblModelVoiture.Size = new System.Drawing.Size(48, 13);
             this.lblModelVoiture.TabIndex = 13;
             this.lblModelVoiture.Text = "Modèle :";
-            this.lblModelVoiture.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblMarqueVoiture
             // 
@@ -297,7 +322,6 @@
             this.lblMarqueVoiture.Size = new System.Drawing.Size(49, 13);
             this.lblMarqueVoiture.TabIndex = 12;
             this.lblMarqueVoiture.Text = "Marque :";
-            this.lblMarqueVoiture.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -307,7 +331,6 @@
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "ID :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 
@@ -323,7 +346,7 @@
             this.dGridViewVoiture.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.dGridViewVoiture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dGridViewVoiture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
+            this.IDVoiture,
             this.Marque,
             this.Modèle,
             this.Année});
@@ -333,10 +356,10 @@
             this.dGridViewVoiture.TabIndex = 1;
             this.dGridViewVoiture.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridViewVoiture_CellContentClick);
             // 
-            // ID
+            // IDVoiture
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
+            this.IDVoiture.HeaderText = "ID";
+            this.IDVoiture.Name = "IDVoiture";
             // 
             // Marque
             // 
@@ -356,6 +379,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -365,18 +389,32 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Membre";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(286, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(184, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Gestion des membres";
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SpringGreen;
-            this.panel3.Controls.Add(this.button6);
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.button4);
-            this.panel3.Controls.Add(this.textBox9);
+            this.panel3.Controls.Add(this.btnAfficherMembre);
+            this.panel3.Controls.Add(this.txtNbLocMembre);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.btnSupprimMembre);
+            this.panel3.Controls.Add(this.btnModifMembre);
+            this.panel3.Controls.Add(this.btnAjoutMembre);
+            this.panel3.Controls.Add(this.txtMailMembre);
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.textBox5);
-            this.panel3.Controls.Add(this.textBox6);
-            this.panel3.Controls.Add(this.textBox7);
-            this.panel3.Controls.Add(this.textBox8);
+            this.panel3.Controls.Add(this.txtAdressMembre);
+            this.panel3.Controls.Add(this.txtPhoneMembre);
+            this.panel3.Controls.Add(this.txtNomMembre);
+            this.panel3.Controls.Add(this.txtIDMembre);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label7);
@@ -386,81 +424,112 @@
             this.panel3.Size = new System.Drawing.Size(791, 172);
             this.panel3.TabIndex = 3;
             // 
-            // button6
+            // btnAfficherMembre
             // 
-            this.button6.Location = new System.Drawing.Point(351, 90);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 31;
-            this.button6.Text = "Supprimer";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnAfficherMembre.Location = new System.Drawing.Point(231, 94);
+            this.btnAfficherMembre.Name = "btnAfficherMembre";
+            this.btnAfficherMembre.Size = new System.Drawing.Size(75, 23);
+            this.btnAfficherMembre.TabIndex = 34;
+            this.btnAfficherMembre.Text = "Afficher";
+            this.btnAfficherMembre.UseVisualStyleBackColor = true;
+            this.btnAfficherMembre.Click += new System.EventHandler(this.btnAfficherMembre_Click);
             // 
-            // button5
+            // txtNbLocMembre
             // 
-            this.button5.Location = new System.Drawing.Point(351, 47);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 30;
-            this.button5.Text = "Modifier";
-            this.button5.UseVisualStyleBackColor = true;
+            this.txtNbLocMembre.Location = new System.Drawing.Point(92, 133);
+            this.txtNbLocMembre.Name = "txtNbLocMembre";
+            this.txtNbLocMembre.Size = new System.Drawing.Size(100, 20);
+            this.txtNbLocMembre.TabIndex = 33;
             // 
-            // button4
+            // label3
             // 
-            this.button4.Location = new System.Drawing.Point(351, 7);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 29;
-            this.button4.Text = "Ajouter";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "NbLocations :";
             // 
-            // textBox9
+            // btnSupprimMembre
             // 
-            this.textBox9.Location = new System.Drawing.Point(124, 113);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 28;
+            this.btnSupprimMembre.Location = new System.Drawing.Point(231, 64);
+            this.btnSupprimMembre.Name = "btnSupprimMembre";
+            this.btnSupprimMembre.Size = new System.Drawing.Size(75, 23);
+            this.btnSupprimMembre.TabIndex = 31;
+            this.btnSupprimMembre.Text = "Supprimer";
+            this.btnSupprimMembre.UseVisualStyleBackColor = true;
+            this.btnSupprimMembre.Click += new System.EventHandler(this.btnSupprimMembre_Click);
+            // 
+            // btnModifMembre
+            // 
+            this.btnModifMembre.Location = new System.Drawing.Point(231, 35);
+            this.btnModifMembre.Name = "btnModifMembre";
+            this.btnModifMembre.Size = new System.Drawing.Size(75, 23);
+            this.btnModifMembre.TabIndex = 30;
+            this.btnModifMembre.Text = "Modifier";
+            this.btnModifMembre.UseVisualStyleBackColor = true;
+            this.btnModifMembre.Click += new System.EventHandler(this.btnModifMembre_Click);
+            // 
+            // btnAjoutMembre
+            // 
+            this.btnAjoutMembre.Location = new System.Drawing.Point(231, 8);
+            this.btnAjoutMembre.Name = "btnAjoutMembre";
+            this.btnAjoutMembre.Size = new System.Drawing.Size(75, 23);
+            this.btnAjoutMembre.TabIndex = 29;
+            this.btnAjoutMembre.Text = "Ajouter";
+            this.btnAjoutMembre.UseVisualStyleBackColor = true;
+            this.btnAjoutMembre.Click += new System.EventHandler(this.btnAjoutMembre_Click);
+            // 
+            // txtMailMembre
+            // 
+            this.txtMailMembre.Location = new System.Drawing.Point(92, 107);
+            this.txtMailMembre.Name = "txtMailMembre";
+            this.txtMailMembre.Size = new System.Drawing.Size(100, 20);
+            this.txtMailMembre.TabIndex = 28;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(53, 116);
+            this.label9.Location = new System.Drawing.Point(44, 109);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 27;
             this.label9.Text = "E-Mail :";
             // 
-            // textBox5
+            // txtAdressMembre
             // 
-            this.textBox5.Location = new System.Drawing.Point(124, 87);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 26;
+            this.txtAdressMembre.Location = new System.Drawing.Point(92, 81);
+            this.txtAdressMembre.Name = "txtAdressMembre";
+            this.txtAdressMembre.Size = new System.Drawing.Size(100, 20);
+            this.txtAdressMembre.TabIndex = 26;
             // 
-            // textBox6
+            // txtPhoneMembre
             // 
-            this.textBox6.Location = new System.Drawing.Point(124, 61);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 25;
+            this.txtPhoneMembre.Location = new System.Drawing.Point(92, 56);
+            this.txtPhoneMembre.Name = "txtPhoneMembre";
+            this.txtPhoneMembre.Size = new System.Drawing.Size(100, 20);
+            this.txtPhoneMembre.TabIndex = 25;
             // 
-            // textBox7
+            // txtNomMembre
             // 
-            this.textBox7.Location = new System.Drawing.Point(124, 35);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 24;
+            this.txtNomMembre.Location = new System.Drawing.Point(92, 33);
+            this.txtNomMembre.Name = "txtNomMembre";
+            this.txtNomMembre.Size = new System.Drawing.Size(100, 20);
+            this.txtNomMembre.TabIndex = 24;
             // 
-            // textBox8
+            // txtIDMembre
             // 
-            this.textBox8.Location = new System.Drawing.Point(124, 11);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 23;
+            this.txtIDMembre.BackColor = System.Drawing.Color.SlateGray;
+            this.txtIDMembre.Location = new System.Drawing.Point(92, 9);
+            this.txtIDMembre.Name = "txtIDMembre";
+            this.txtIDMembre.ReadOnly = true;
+            this.txtIDMembre.Size = new System.Drawing.Size(100, 20);
+            this.txtIDMembre.TabIndex = 23;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 90);
+            this.label5.Location = new System.Drawing.Point(29, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 22;
@@ -469,7 +538,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 64);
+            this.label6.Location = new System.Drawing.Point(22, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 13);
             this.label6.TabIndex = 21;
@@ -478,7 +547,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(53, 38);
+            this.label7.Location = new System.Drawing.Point(51, 35);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 20;
@@ -487,7 +556,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(53, 11);
+            this.label8.Location = new System.Drawing.Point(64, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(22, 13);
             this.label8.TabIndex = 19;
@@ -496,20 +565,58 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.SpringGreen;
-            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Controls.Add(this.dGridViewMembre);
             this.panel4.Location = new System.Drawing.Point(6, 28);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(791, 161);
             this.panel4.TabIndex = 2;
             // 
-            // dataGridView1
+            // dGridViewMembre
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(761, 155);
-            this.dataGridView1.TabIndex = 0;
+            this.dGridViewMembre.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.dGridViewMembre.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridViewMembre.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDMembre,
+            this.NomMembre,
+            this.TelephoneMembre,
+            this.AdresseMembre,
+            this.EmailMembre,
+            this.NbLocationsMembre});
+            this.dGridViewMembre.Location = new System.Drawing.Point(16, 3);
+            this.dGridViewMembre.Name = "dGridViewMembre";
+            this.dGridViewMembre.Size = new System.Drawing.Size(761, 155);
+            this.dGridViewMembre.TabIndex = 0;
+            this.dGridViewMembre.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridViewMembre_CellContentClick);
+            // 
+            // IDMembre
+            // 
+            this.IDMembre.HeaderText = "ID";
+            this.IDMembre.Name = "IDMembre";
+            // 
+            // NomMembre
+            // 
+            this.NomMembre.HeaderText = "Nom";
+            this.NomMembre.Name = "NomMembre";
+            // 
+            // TelephoneMembre
+            // 
+            this.TelephoneMembre.HeaderText = "Téléphone";
+            this.TelephoneMembre.Name = "TelephoneMembre";
+            // 
+            // AdresseMembre
+            // 
+            this.AdresseMembre.HeaderText = "Adresse";
+            this.AdresseMembre.Name = "AdresseMembre";
+            // 
+            // EmailMembre
+            // 
+            this.EmailMembre.HeaderText = "E-mail";
+            this.EmailMembre.Name = "EmailMembre";
+            // 
+            // NbLocationsMembre
+            // 
+            this.NbLocationsMembre.HeaderText = "NbLocations";
+            this.NbLocationsMembre.Name = "NbLocationsMembre";
             // 
             // tabPage3
             // 
@@ -525,13 +632,16 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.SpringGreen;
-            this.panel5.Controls.Add(this.button7);
-            this.panel5.Controls.Add(this.button8);
-            this.panel5.Controls.Add(this.button9);
-            this.panel5.Controls.Add(this.textBox10);
-            this.panel5.Controls.Add(this.textBox11);
-            this.panel5.Controls.Add(this.textBox12);
-            this.panel5.Controls.Add(this.textBox13);
+            this.panel5.Controls.Add(this.datePickReservation);
+            this.panel5.Controls.Add(this.AfficherReservation);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.btnSupprimReservation);
+            this.panel5.Controls.Add(this.btnModifReservation);
+            this.panel5.Controls.Add(this.btnAjoutReservation);
+            this.panel5.Controls.Add(this.txtIDEmployeReservation);
+            this.panel5.Controls.Add(this.txtIDVoitureReservation);
+            this.panel5.Controls.Add(this.txtIDMembreReservation);
+            this.panel5.Controls.Add(this.txtIDReservation);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Controls.Add(this.label12);
@@ -541,92 +651,122 @@
             this.panel5.Size = new System.Drawing.Size(791, 172);
             this.panel5.TabIndex = 3;
             // 
-            // button7
+            // datePickReservation
             // 
-            this.button7.Location = new System.Drawing.Point(473, 91);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 32;
-            this.button7.Text = "Supprimer";
-            this.button7.UseVisualStyleBackColor = true;
+            this.datePickReservation.Location = new System.Drawing.Point(127, 108);
+            this.datePickReservation.Name = "datePickReservation";
+            this.datePickReservation.Size = new System.Drawing.Size(115, 20);
+            this.datePickReservation.TabIndex = 36;
             // 
-            // button8
+            // AfficherReservation
             // 
-            this.button8.Location = new System.Drawing.Point(473, 65);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 31;
-            this.button8.Text = "Modifier";
-            this.button8.UseVisualStyleBackColor = true;
+            this.AfficherReservation.Location = new System.Drawing.Point(258, 94);
+            this.AfficherReservation.Name = "AfficherReservation";
+            this.AfficherReservation.Size = new System.Drawing.Size(75, 23);
+            this.AfficherReservation.TabIndex = 35;
+            this.AfficherReservation.Text = "Afficher";
+            this.AfficherReservation.UseVisualStyleBackColor = true;
+            this.AfficherReservation.Click += new System.EventHandler(this.AfficherReservation_Click);
             // 
-            // button9
+            // label4
             // 
-            this.button9.Location = new System.Drawing.Point(473, 41);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 30;
-            this.button9.Text = "Ajouter";
-            this.button9.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Date de réservation :";
             // 
-            // textBox10
+            // btnSupprimReservation
             // 
-            this.textBox10.Location = new System.Drawing.Point(300, 111);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 29;
+            this.btnSupprimReservation.Location = new System.Drawing.Point(258, 65);
+            this.btnSupprimReservation.Name = "btnSupprimReservation";
+            this.btnSupprimReservation.Size = new System.Drawing.Size(75, 23);
+            this.btnSupprimReservation.TabIndex = 32;
+            this.btnSupprimReservation.Text = "Supprimer";
+            this.btnSupprimReservation.UseVisualStyleBackColor = true;
+            this.btnSupprimReservation.Click += new System.EventHandler(this.btnSupprimReservation_Click);
             // 
-            // textBox11
+            // btnModifReservation
             // 
-            this.textBox11.Location = new System.Drawing.Point(300, 88);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 28;
+            this.btnModifReservation.Location = new System.Drawing.Point(258, 39);
+            this.btnModifReservation.Name = "btnModifReservation";
+            this.btnModifReservation.Size = new System.Drawing.Size(75, 23);
+            this.btnModifReservation.TabIndex = 31;
+            this.btnModifReservation.Text = "Modifier";
+            this.btnModifReservation.UseVisualStyleBackColor = true;
+            this.btnModifReservation.Click += new System.EventHandler(this.btnModifReservation_Click);
             // 
-            // textBox12
+            // btnAjoutReservation
             // 
-            this.textBox12.Location = new System.Drawing.Point(300, 65);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 27;
+            this.btnAjoutReservation.Location = new System.Drawing.Point(258, 15);
+            this.btnAjoutReservation.Name = "btnAjoutReservation";
+            this.btnAjoutReservation.Size = new System.Drawing.Size(75, 23);
+            this.btnAjoutReservation.TabIndex = 30;
+            this.btnAjoutReservation.Text = "Ajouter";
+            this.btnAjoutReservation.UseVisualStyleBackColor = true;
+            this.btnAjoutReservation.Click += new System.EventHandler(this.btnAjoutReservation_Click);
             // 
-            // textBox13
+            // txtIDEmployeReservation
             // 
-            this.textBox13.Location = new System.Drawing.Point(300, 43);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 26;
+            this.txtIDEmployeReservation.Location = new System.Drawing.Point(127, 81);
+            this.txtIDEmployeReservation.Name = "txtIDEmployeReservation";
+            this.txtIDEmployeReservation.Size = new System.Drawing.Size(100, 20);
+            this.txtIDEmployeReservation.TabIndex = 29;
+            // 
+            // txtIDVoitureReservation
+            // 
+            this.txtIDVoitureReservation.Location = new System.Drawing.Point(127, 58);
+            this.txtIDVoitureReservation.Name = "txtIDVoitureReservation";
+            this.txtIDVoitureReservation.Size = new System.Drawing.Size(100, 20);
+            this.txtIDVoitureReservation.TabIndex = 28;
+            // 
+            // txtIDMembreReservation
+            // 
+            this.txtIDMembreReservation.Location = new System.Drawing.Point(127, 35);
+            this.txtIDMembreReservation.Name = "txtIDMembreReservation";
+            this.txtIDMembreReservation.Size = new System.Drawing.Size(100, 20);
+            this.txtIDMembreReservation.TabIndex = 27;
+            // 
+            // txtIDReservation
+            // 
+            this.txtIDReservation.BackColor = System.Drawing.Color.SlateGray;
+            this.txtIDReservation.Location = new System.Drawing.Point(127, 13);
+            this.txtIDReservation.Name = "txtIDReservation";
+            this.txtIDReservation.Size = new System.Drawing.Size(100, 20);
+            this.txtIDReservation.TabIndex = 26;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(248, 114);
+            this.label10.Location = new System.Drawing.Point(57, 88);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.Size = new System.Drawing.Size(64, 13);
             this.label10.TabIndex = 25;
-            this.label10.Text = "Année :";
+            this.label10.Text = "IDEmploye :";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(244, 91);
+            this.label11.Location = new System.Drawing.Point(64, 65);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 13);
+            this.label11.Size = new System.Drawing.Size(57, 13);
             this.label11.TabIndex = 24;
-            this.label11.Text = "Modèle :";
+            this.label11.Text = "IDVoiture :";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(243, 68);
+            this.label12.Location = new System.Drawing.Point(59, 42);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 13);
+            this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 23;
-            this.label12.Text = "Marque :";
+            this.label12.Text = "IDMembre :";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(268, 46);
+            this.label13.Location = new System.Drawing.Point(97, 20);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(24, 13);
             this.label13.TabIndex = 22;
@@ -635,20 +775,64 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.SpringGreen;
-            this.panel6.Controls.Add(this.dataGridView3);
+            this.panel6.Controls.Add(this.label18);
+            this.panel6.Controls.Add(this.dGridViewReservation);
             this.panel6.Location = new System.Drawing.Point(4, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(791, 183);
             this.panel6.TabIndex = 2;
             // 
-            // dataGridView3
+            // label18
             // 
-            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(18, 30);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(761, 150);
-            this.dataGridView3.TabIndex = 1;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label18.Location = new System.Drawing.Point(254, 7);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(209, 20);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Gestion des réservations";
+            // 
+            // dGridViewReservation
+            // 
+            this.dGridViewReservation.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.dGridViewReservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridViewReservation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDReservation,
+            this.IDMembreReservation,
+            this.IDVoitureReservation,
+            this.IDEmployeReservation,
+            this.DateReservation});
+            this.dGridViewReservation.Location = new System.Drawing.Point(18, 30);
+            this.dGridViewReservation.Name = "dGridViewReservation";
+            this.dGridViewReservation.Size = new System.Drawing.Size(761, 150);
+            this.dGridViewReservation.TabIndex = 1;
+            this.dGridViewReservation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dGridViewReservation_CellContentClick);
+            // 
+            // IDReservation
+            // 
+            this.IDReservation.HeaderText = "ID";
+            this.IDReservation.Name = "IDReservation";
+            // 
+            // IDMembreReservation
+            // 
+            this.IDMembreReservation.HeaderText = "IDMembre";
+            this.IDMembreReservation.Name = "IDMembreReservation";
+            // 
+            // IDVoitureReservation
+            // 
+            this.IDVoitureReservation.HeaderText = "IDVoiture";
+            this.IDVoitureReservation.Name = "IDVoitureReservation";
+            // 
+            // IDEmployeReservation
+            // 
+            this.IDEmployeReservation.HeaderText = "IDEmploye";
+            this.IDEmployeReservation.Name = "IDEmployeReservation";
+            // 
+            // DateReservation
+            // 
+            this.DateReservation.HeaderText = "Date";
+            this.DateReservation.Name = "DateReservation";
             // 
             // tabPage4
             // 
@@ -664,6 +848,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.SpringGreen;
+            this.panel7.Controls.Add(this.btnAfficherLocations);
             this.panel7.Controls.Add(this.button10);
             this.panel7.Controls.Add(this.button11);
             this.panel7.Controls.Add(this.button12);
@@ -774,20 +959,27 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.SpringGreen;
-            this.panel8.Controls.Add(this.dataGridView4);
+            this.panel8.Controls.Add(this.label19);
+            this.panel8.Controls.Add(this.dGridViewLocation);
             this.panel8.Location = new System.Drawing.Point(4, 3);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(791, 183);
             this.panel8.TabIndex = 2;
             // 
-            // dataGridView4
+            // dGridViewLocation
             // 
-            this.dataGridView4.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(12, 30);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(761, 150);
-            this.dataGridView4.TabIndex = 1;
+            this.dGridViewLocation.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.dGridViewLocation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGridViewLocation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDLocation,
+            this.IDMembreLocation,
+            this.IDVoitureLocation,
+            this.DateLocation,
+            this.DateRetour});
+            this.dGridViewLocation.Location = new System.Drawing.Point(12, 30);
+            this.dGridViewLocation.Name = "dGridViewLocation";
+            this.dGridViewLocation.Size = new System.Drawing.Size(761, 150);
+            this.dGridViewLocation.TabIndex = 1;
             // 
             // tabPage5
             // 
@@ -929,21 +1121,68 @@
             this.dataGridView5.Size = new System.Drawing.Size(761, 150);
             this.dataGridView5.TabIndex = 1;
             // 
-            // logoutUp
+            // btnLogout
             // 
-            this.logoutUp.Location = new System.Drawing.Point(736, 428);
-            this.logoutUp.Name = "logoutUp";
-            this.logoutUp.Size = new System.Drawing.Size(75, 23);
-            this.logoutUp.TabIndex = 5;
-            this.logoutUp.Text = "Logout";
-            this.logoutUp.UseVisualStyleBackColor = true;
+            this.btnLogout.Location = new System.Drawing.Point(736, 428);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label19.Location = new System.Drawing.Point(267, 7);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(183, 20);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Gestion des locations";
+            // 
+            // IDLocation
+            // 
+            this.IDLocation.HeaderText = "ID";
+            this.IDLocation.Name = "IDLocation";
+            // 
+            // IDMembreLocation
+            // 
+            this.IDMembreLocation.HeaderText = "IDMembre";
+            this.IDMembreLocation.Name = "IDMembreLocation";
+            // 
+            // IDVoitureLocation
+            // 
+            this.IDVoitureLocation.HeaderText = "IDVoiture";
+            this.IDVoitureLocation.Name = "IDVoitureLocation";
+            // 
+            // DateLocation
+            // 
+            this.DateLocation.HeaderText = "DateLocation";
+            this.DateLocation.Name = "DateLocation";
+            // 
+            // DateRetour
+            // 
+            this.DateRetour.HeaderText = "DateRetour";
+            this.DateRetour.Name = "DateRetour";
+            // 
+            // btnAfficherLocations
+            // 
+            this.btnAfficherLocations.Location = new System.Drawing.Point(473, 121);
+            this.btnAfficherLocations.Name = "btnAfficherLocations";
+            this.btnAfficherLocations.Size = new System.Drawing.Size(75, 23);
+            this.btnAfficherLocations.TabIndex = 33;
+            this.btnAfficherLocations.Text = "Afficher";
+            this.btnAfficherLocations.UseVisualStyleBackColor = true;
+            this.btnAfficherLocations.Click += new System.EventHandler(this.btnAfficherLocations_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 451);
-            this.Controls.Add(this.logoutUp);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Location de voitures";
@@ -955,20 +1194,23 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dGridViewVoiture)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridViewMembre)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridViewReservation)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGridViewLocation)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
@@ -999,9 +1241,9 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.BindingSource iVoitureServiceBindingSource;
         private System.Windows.Forms.DataGridView dGridViewVoiture;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView dGridViewMembre;
+        private System.Windows.Forms.DataGridView dGridViewReservation;
+        private System.Windows.Forms.DataGridView dGridViewLocation;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.Button btnSupprimeVoiture;
         private System.Windows.Forms.Button btnModifVoiture;
@@ -1013,27 +1255,26 @@
         private System.Windows.Forms.Label lblModelVoiture;
         private System.Windows.Forms.Label lblMarqueVoiture;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Button btnSupprimMembre;
+        private System.Windows.Forms.Button btnModifMembre;
+        private System.Windows.Forms.Button btnAjoutMembre;
+        private System.Windows.Forms.TextBox txtMailMembre;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtAdressMembre;
+        private System.Windows.Forms.TextBox txtPhoneMembre;
+        private System.Windows.Forms.TextBox txtNomMembre;
+        private System.Windows.Forms.TextBox txtIDMembre;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button logoutUp;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnSupprimReservation;
+        private System.Windows.Forms.Button btnModifReservation;
+        private System.Windows.Forms.Button btnAjoutReservation;
+        private System.Windows.Forms.TextBox txtIDEmployeReservation;
+        private System.Windows.Forms.TextBox txtIDMembreReservation;
+        private System.Windows.Forms.TextBox txtIDReservation;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -1063,10 +1304,37 @@
         private System.Windows.Forms.DateTimePicker datePickVoiture;
         private System.Windows.Forms.Label lblTitreVoiture;
         private System.Windows.Forms.Button btnAfficherVoiture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDVoiture;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marque;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modèle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Année;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNbLocMembre;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnAfficherMembre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDMembre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomMembre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TelephoneMembre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AdresseMembre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmailMembre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NbLocationsMembre;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button AfficherReservation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDReservation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDMembreReservation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDVoitureReservation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDEmployeReservation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateReservation;
+        private System.Windows.Forms.TextBox txtIDVoitureReservation;
+        private System.Windows.Forms.DateTimePicker datePickReservation;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnAfficherLocations;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDMembreLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDVoitureLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateRetour;
     }
 }
 
