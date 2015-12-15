@@ -18,3 +18,4 @@ C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLo
 C:\Users\200733652\Desktop\GitHub\ProjetLocation\ProjetLocation\bin\Debug\ProjetLocation.exe.config
 C:\Users\200733652\Desktop\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.exe
 C:\Users\200733652\Desktop\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.pdb
+C:\Users\Franz\Documents\GitHub\ProjetLocation\ProjetLocation\obj\Debug\ProjetLocation.csprojResolveAssemblyReference.cache
